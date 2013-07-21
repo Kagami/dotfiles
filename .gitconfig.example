@@ -1,0 +1,9 @@
+[user]
+	name = Kagami Hiiragi
+	email = kagami@genshiken.org
+[core]
+	excludesfile = ~/.gitignore-global
+[color]
+	ui = true
+[push]
+	default = simple
