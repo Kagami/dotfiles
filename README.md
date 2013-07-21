@@ -17,4 +17,4 @@ is very simple.
 
 That's it. Use `gdot` as `git` for future manipulations with dotfiles and Git will do it just perfectly.
 
-Note that `.gitignore` contains `*` so you will need to use `gdot add -f` for adding new files. It garantee what you won't accidentally add some private data to the repository.
+Note that `.gitignore` contains `*` so you will need to use `gdot add -f` for adding new files. It guarantee that you won't accidentally add private data to the repo.
