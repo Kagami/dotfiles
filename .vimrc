@@ -35,6 +35,8 @@ map <A-j> <C-w>j
 map <A-k> <C-w>k
 map <A-l> <C-w>l
 map <C-n> :NERDTreeTabsToggle<CR>
+map <C-t> :tabe 
+map <C-o> :e 
 
 au BufWinEnter * set expandtab | set tabstop=4 | set shiftwidth=4
 au BufWinEnter *.coffee set tabstop=2 | set shiftwidth=2
