@@ -18,4 +18,4 @@ is very simple.
 
 That's it. Use `gdot` as `git` for future manipulations with dot files and git will do it just perfectly.
 
-Note that `.gitignore` contain `*` so you will need to use `gdot add -f` for addint new files. It garantee what you won't accidentally add some private data to the repository.
+Note that `.gitignore` contain `*` so you will need to use `gdot add -f` for adding new files. It garantee what you won't accidentally add some private data to the repository.
