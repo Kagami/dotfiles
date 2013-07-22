@@ -12,6 +12,7 @@ colorscheme solarized
 set autoindent
 set wildmenu
 set nofoldenable
+set ignorecase
 set incsearch
 set nohlsearch
 set laststatus=2
