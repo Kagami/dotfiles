@@ -32,10 +32,11 @@ map <C-h> :tabprevious<CR>
 map <C-l> :tabnext<CR>
 map <Tab> <C-w>w
 map <S-Tab> <C-w>W
-map <A-h> <C-w>h
-map <A-j> <C-w>j
-map <A-k> <C-w>k
-map <A-l> <C-w>l
+map <Esc>h <C-w>h
+map <Esc>j <C-w>j
+map <Esc>k <C-w>k
+map <Esc>l <C-w>l
+map <Esc>c <C-w>c
 map <C-n> :NERDTreeTabsToggle<CR>
 map <C-t> :tabe 
 
