@@ -25,6 +25,7 @@ let g:netrw_banner=0
 let g:netrw_browse_split=3
 let g:vim_markdown_folding_disabled=1
 let g:vim_json_syntax_conceal=0
+let g:NERDTreeWinSize=29
 
 map <C-j> <C-e>j
 map <C-k> <C-y>k

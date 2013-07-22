@@ -112,7 +112,7 @@ myLayoutHook =
     tiled ||| mirror
   where
     fixHtml5Fullscreen = noBorders $ fullscreenFull $ makeTiled (7%10)
-    coding = combineTwo (TwoPane (1%100) (1615%1920)) tiled Simplest
+    coding = makeTiled (1114%1920)
     mirror = Mirror tiled
     tiled = makeTiled (1%2)
     makeTiled n = Tall 1 (1%100) n
