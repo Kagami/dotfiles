@@ -19,6 +19,6 @@ That's it. Use `gdot` as `git` for future manipulations with dotfiles and Git wi
 
 Note that `.gitignore` contains `*` so you will need to use `gdot add -f` for adding new files. It guarantee that you won't accidentally add private data to the repo.
 
-## Bugs
+## Troubleshooting
 
-If you got something like `fatal: working tree '.vim/bundle/nerdtree' already exists` on `gdot submodule update` command you should update your Git version. They've fixed it.
+* If you got something like `fatal: working tree '.vim/bundle/nerdtree' already exists` on `gdot submodule update` command you should update your Git version. They've fixed it.
