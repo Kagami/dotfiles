@@ -28,17 +28,19 @@ let g:vim_json_syntax_conceal=0
 let g:NERDTreeWinSize=29
 let g:hardtime_default_on=1
 
-map <C-h> :tabprevious<CR>
-map <C-l> :tabnext<CR>
-map <Tab> <C-w>w
-map <S-Tab> <C-w>W
-map <Esc>h <C-w>h
-map <Esc>j <C-w>j
-map <Esc>k <C-w>k
-map <Esc>l <C-w>l
-map <Esc>c <C-w>c
-map <C-n> :NERDTreeTabsToggle<CR>
-map <C-t> :tabe 
+let mapleader=','
+nnoremap <C-h> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
+nnoremap <Tab> <C-w>w
+nnoremap <S-Tab> <C-w>W
+nnoremap <Esc>h <C-w>h
+nnoremap <Esc>j <C-w>j
+nnoremap <Esc>k <C-w>k
+nnoremap <Esc>l <C-w>l
+nnoremap <Esc>c <C-w>c
+nnoremap <C-n> :NERDTreeTabsToggle<CR>
+nnoremap <C-t> :tabe<Space>
+nnoremap <leader>a :Ack<Space>
 
 au BufWinEnter * set expandtab | set tabstop=4 | set shiftwidth=4
 au BufWinEnter *.coffee set tabstop=2 | set shiftwidth=2

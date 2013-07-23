@@ -1,0 +1,7 @@
+--type-add=css=.less,.sass,.scss,.styl
+--type-add=js=.coffee
+--ignore-dir=vendor
+--ignore-dir=public
+--ignore-dir=node_modules
+--smart-case
+--sort-files
