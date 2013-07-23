@@ -28,8 +28,6 @@ let g:vim_json_syntax_conceal=0
 let g:NERDTreeWinSize=29
 let g:hardtime_default_on=1
 
-map <C-j> <C-e>j
-map <C-k> <C-y>k
 map <C-h> :tabprevious<CR>
 map <C-l> :tabnext<CR>
 map <Tab> <C-w>w
