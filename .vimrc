@@ -3,10 +3,10 @@ execute pathogen#infect()
 filetype plugin indent on
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
+set t_Co=16
 syntax enable
 set background=light
 let g:solarized_termtrans=1
-let g:solarized_termcolors=256
 colorscheme solarized
 
 set autoindent
