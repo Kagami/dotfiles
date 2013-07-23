@@ -55,6 +55,8 @@ au BufWinEnter Gemfile set tabstop=2 | set shiftwidth=2
 au BufWinEnter Rakefile set tabstop=2 | set shiftwidth=2
 au BufWinEnter Makefile set noexpandtab
 
+au FileType xdefaults set commentstring=!\ %s
+
 highlight ExtraWhitespace ctermbg=red guibg=red
 au BufWinEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
