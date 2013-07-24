@@ -83,6 +83,7 @@ alias vz='vim ~/.zshrc'
 alias vx='vim ~/.xmonad/xmonad.hs'
 alias z='source ~/.zshrc'
 alias gdot='git --git-dir=$HOME/code/dotfiles.git --work-tree=$HOME'
+alias gdup='gdot pull && gdot submodule init && gdot submodule update'
 if ! which hd &>/dev/null; then
     alias hd='hexdump -C'
 fi
