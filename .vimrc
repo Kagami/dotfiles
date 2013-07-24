@@ -5,7 +5,7 @@ set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 set t_Co=16
 syntax enable
-set background=light
+set background=dark
 let g:solarized_termtrans=1
 colorscheme solarized
 
@@ -19,7 +19,6 @@ set nohlsearch
 set laststatus=2
 set noshowmode
 set colorcolumn=80
-set mouse=a
 set nobackup
 set nowritebackup
 let g:netrw_list_hide='.*\.swp$'
