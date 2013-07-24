@@ -10,6 +10,7 @@ let g:solarized_termtrans=1
 colorscheme solarized
 
 set autoindent
+set smarttab
 set wildmenu
 set nofoldenable
 set ignorecase
@@ -43,17 +44,17 @@ nnoremap <C-n> :NERDTreeTabsToggle<CR>
 nnoremap <C-t> :tabe<Space>
 nnoremap <leader>a :Ack<Space>
 
-au BufWinEnter * set expandtab | set tabstop=4 | set shiftwidth=4
-au BufWinEnter *.coffee set tabstop=2 | set shiftwidth=2
-au BufWinEnter *.html set tabstop=2 | set shiftwidth=2
-au BufWinEnter *.gpp set tabstop=2 | set shiftwidth=2
-au BufWinEnter *.jade set tabstop=2 | set shiftwidth=2
-au BufWinEnter *.styl set tabstop=2 | set shiftwidth=2
-au BufWinEnter *.less set tabstop=2 | set shiftwidth=2
-au BufWinEnter *.eco set tabstop=2 | set shiftwidth=2
-au BufWinEnter *.rb set tabstop=2 | set shiftwidth=2
-au BufWinEnter Gemfile set tabstop=2 | set shiftwidth=2
-au BufWinEnter Rakefile set tabstop=2 | set shiftwidth=2
+au BufWinEnter * set expandtab | set shiftwidth=4
+au BufWinEnter *.coffee set shiftwidth=2
+au BufWinEnter *.html set shiftwidth=2
+au BufWinEnter *.gpp set shiftwidth=2
+au BufWinEnter *.jade set shiftwidth=2
+au BufWinEnter *.styl set shiftwidth=2
+au BufWinEnter *.less set shiftwidth=2
+au BufWinEnter *.eco set shiftwidth=2
+au BufWinEnter *.rb set shiftwidth=2
+au BufWinEnter Gemfile set shiftwidth=2
+au BufWinEnter Rakefile set shiftwidth=2
 au BufWinEnter Makefile set noexpandtab
 
 au FileType xdefaults set commentstring=!\ %s
