@@ -20,6 +20,7 @@ set nohlsearch
 set laststatus=2
 set noshowmode
 set colorcolumn=80
+set scrolloff=4
 set nobackup
 set nowritebackup
 let g:netrw_list_hide='.*\.swp$'
@@ -42,6 +43,9 @@ nnoremap <Esc>l <C-w>l
 nnoremap <Esc>c <C-w>c
 nnoremap <C-n> :NERDTreeTabsToggle<CR>
 nnoremap <C-t> :tabe<Space>
+nnoremap <Space> zz
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
 nnoremap <Leader>a :Ack<Space>
 
 autocmd BufWinEnter * set expandtab | set shiftwidth=4
@@ -65,7 +69,7 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-set langmap=ёйцукенгшщзхъфывапролджэячсмитьбю;`qwertyuiop[]asdfghjkl\;'zxcvbnm\\,.,ЙЦУКЕРГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>
+set langmap=ёйцукенгшщзхъфывапролджэячсмитьбю;`qwertyuiop[]asdfghjkl\;'zxcvbnm\\,.,ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>
 
 if ! has('gui_running')
     set ttimeoutlen=10
