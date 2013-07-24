@@ -21,4 +21,4 @@ Note that `.gitignore` contains `*` so you will need to use `gdot add -f` for ad
 
 ## Troubleshooting
 
-* If you got something like `fatal: working tree '.vim/bundle/nerdtree' already exists` on `gdot submodule update` command you should update your Git version. They've fixed it.
+* If you got something like `fatal: working tree '/home/user' already exists` on `gdot submodule update` command you should update your Git version. They've fixed it.
