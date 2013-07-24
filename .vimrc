@@ -1,7 +1,7 @@
 set nocompatible
 execute pathogen#infect()
 filetype plugin indent on
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+set runtimepath+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 set t_Co=16
 syntax enable
@@ -42,28 +42,28 @@ nnoremap <Esc>l <C-w>l
 nnoremap <Esc>c <C-w>c
 nnoremap <C-n> :NERDTreeTabsToggle<CR>
 nnoremap <C-t> :tabe<Space>
-nnoremap <leader>a :Ack<Space>
+nnoremap <Leader>a :Ack<Space>
 
-au BufWinEnter * set expandtab | set shiftwidth=4
-au BufWinEnter *.coffee set shiftwidth=2
-au BufWinEnter *.html set shiftwidth=2
-au BufWinEnter *.gpp set shiftwidth=2
-au BufWinEnter *.jade set shiftwidth=2
-au BufWinEnter *.styl set shiftwidth=2
-au BufWinEnter *.less set shiftwidth=2
-au BufWinEnter *.eco set shiftwidth=2
-au BufWinEnter *.rb set shiftwidth=2
-au BufWinEnter Gemfile set shiftwidth=2
-au BufWinEnter Rakefile set shiftwidth=2
-au BufWinEnter Makefile set noexpandtab
+autocmd BufWinEnter * set expandtab | set shiftwidth=4
+autocmd BufWinEnter *.coffee set shiftwidth=2
+autocmd BufWinEnter *.html set shiftwidth=2
+autocmd BufWinEnter *.gpp set shiftwidth=2
+autocmd BufWinEnter *.jade set shiftwidth=2
+autocmd BufWinEnter *.styl set shiftwidth=2
+autocmd BufWinEnter *.less set shiftwidth=2
+autocmd BufWinEnter *.eco set shiftwidth=2
+autocmd BufWinEnter *.rb set shiftwidth=2
+autocmd BufWinEnter Gemfile set shiftwidth=2
+autocmd BufWinEnter Rakefile set shiftwidth=2
+autocmd BufWinEnter Makefile set noexpandtab
 
-au FileType xdefaults set commentstring=!\ %s
+autocmd FileType xdefaults set commentstring=!\ %s
 
 highlight ExtraWhitespace ctermbg=red guibg=red
-au BufWinEnter * match ExtraWhitespace /\s\+$/
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhitespace /\s\+$/
-au BufWinLeave * call clearmatches()
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 set langmap=ёйцукенгшщзхъфывапролджэячсмитьбю;`qwertyuiop[]asdfghjkl\;'zxcvbnm\\,.,ЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>
 
@@ -71,7 +71,7 @@ if ! has('gui_running')
     set ttimeoutlen=10
     augroup FastEscape
         autocmd!
-        au InsertEnter * set timeoutlen=0
-        au InsertLeave * set timeoutlen=1000
+        autocmd InsertEnter * set timeoutlen=0
+        autocmd InsertLeave * set timeoutlen=1000
     augroup END
 endif
