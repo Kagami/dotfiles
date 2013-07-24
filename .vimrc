@@ -13,11 +13,13 @@ set autoindent
 set wildmenu
 set nofoldenable
 set ignorecase
+set smartcase
 set incsearch
 set nohlsearch
 set laststatus=2
 set noshowmode
 set colorcolumn=80
+set mouse=a
 set nobackup
 set nowritebackup
 let g:netrw_list_hide='.*\.swp$'
