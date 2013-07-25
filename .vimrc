@@ -23,6 +23,7 @@ set colorcolumn=80
 set scrolloff=4
 set nobackup
 set nowritebackup
+set wildignore+=*.pyc
 
 let g:netrw_list_hide='.*\.swp$'
 let g:netrw_banner=0
