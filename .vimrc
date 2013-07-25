@@ -49,6 +49,8 @@ nnoremap <C-t> :tabe<Space>
 nnoremap <Space> zz
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>x :x<CR>
+nnoremap <Leader>z :qa<CR>
 nnoremap <Leader>a :Ack<Space>
 
 autocmd BufWinEnter * set expandtab | set shiftwidth=4
