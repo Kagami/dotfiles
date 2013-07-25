@@ -65,6 +65,7 @@ autocmd BufWinEnter Rakefile set shiftwidth=2
 autocmd BufWinEnter Makefile set noexpandtab
 
 autocmd FileType xdefaults set commentstring=!\ %s
+autocmd FileType gitcommit set colorcolumn=50
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
