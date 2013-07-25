@@ -23,6 +23,7 @@ set colorcolumn=80
 set scrolloff=4
 set nobackup
 set nowritebackup
+
 let g:netrw_list_hide='.*\.swp$'
 let g:netrw_banner=0
 let g:netrw_browse_split=3
@@ -30,6 +31,7 @@ let g:vim_markdown_folding_disabled=1
 let g:vim_json_syntax_conceal=0
 let g:NERDTreeWinSize=29
 let g:hardtime_default_on=1
+let g:ctrlp_custom_ignore='node_modules$'
 
 let mapleader=','
 nnoremap <C-h> :tabprevious<CR>
