@@ -10,6 +10,7 @@ let g:solarized_termtrans=1
 colorscheme solarized
 
 set autoindent
+set relativenumber
 set smarttab
 set wildmenu
 set nofoldenable
@@ -30,7 +31,6 @@ let g:netrw_banner=0
 let g:netrw_browse_split=3
 let g:vim_markdown_folding_disabled=1
 let g:vim_json_syntax_conceal=0
-let g:NERDTreeWinSize=29
 let g:hardtime_default_on=1
 let g:ctrlp_custom_ignore='node_modules$'
 
