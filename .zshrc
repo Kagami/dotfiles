@@ -1,4 +1,8 @@
 [ -f ~/.zprofile ] && . ~/.zprofile
+# To make C-s/C-q work
+stty start undef
+stty stop undef
+
 setopt NO_PROMPT_CR
 HISTFILE=~/.zsh_history
 HISTSIZE=50000

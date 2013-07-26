@@ -45,12 +45,13 @@ nnoremap <Esc>j <C-w>j
 nnoremap <Esc>k <C-w>k
 nnoremap <Esc>l <C-w>l
 nnoremap <Esc>c <C-w>c
-nnoremap <C-t> :tabe<Space>
 nnoremap <Space> zz
-nnoremap <Leader>w :w<CR>
+nnoremap <C-t> :tabe<Space>
+nnoremap <silent> <C-s> :w<CR>
+vnoremap <C-s> <Esc>:w<CR>
+inoremap <C-s> <C-o>:w<CR>
+nnoremap <C-q> :qa<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>x :x<CR>
-nnoremap <Leader>z :qa<CR>
 nnoremap <Leader>a :Ack!<Space>
 cnoremap w!! w !sudo tee % > /dev/null
 
