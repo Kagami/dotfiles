@@ -33,7 +33,7 @@ let g:netrw_banner=0
 let g:vim_markdown_folding_disabled=1
 let g:vim_json_syntax_conceal=0
 let g:hardtime_default_on=1
-let g:ctrlp_custom_ignore='\v(.venv|vendor|public|node_modules)$'
+let g:ctrlp_custom_ignore={'dir': '\v/(vendor|public|node_modules)$'}
 
 let mapleader=','
 nnoremap <C-h> :tabprevious<CR>
