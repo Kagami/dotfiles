@@ -51,7 +51,7 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>x :x<CR>
 nnoremap <Leader>z :qa<CR>
-nnoremap <Leader>a :Ack<Space>
+nnoremap <Leader>a :Ack!<Space>
 cnoremap w!! w !sudo tee % > /dev/null
 
 autocmd BufWinEnter * set expandtab | set shiftwidth=4
