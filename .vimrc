@@ -47,11 +47,11 @@ nnoremap <Esc>l <C-w>l
 nnoremap <Esc>c <C-w>c
 nnoremap <Space> zz
 nnoremap <C-t> :tabe<Space>
-nnoremap <silent> <C-s> :w<CR>
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>
 vnoremap <C-s> <Esc>:w<CR>
-inoremap <C-s> <C-o>:w<CR>
-nnoremap <C-q> :qa<CR>
 nnoremap <Leader>q :q<CR>
+nnoremap <C-q> :qa<CR>
 nnoremap <Leader>a :Ack!<Space>
 cnoremap w!! w !sudo tee % > /dev/null
 
