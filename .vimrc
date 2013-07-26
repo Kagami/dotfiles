@@ -48,6 +48,8 @@ nnoremap <Esc>c <C-w>c
 nnoremap <C-t> :tabe<Space>
 nnoremap <Space> zz
 nnoremap <Leader>a :Ack!<Space>
+nnoremap <Leader>h :set hlsearch<CR>
+nnoremap <Leader>nh :set nohlsearch<CR>
 " Save and quit
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
