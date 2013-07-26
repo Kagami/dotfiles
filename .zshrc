@@ -117,7 +117,7 @@ alias gcl='git clone'
 alias gush='git push'
 alias gull='git pull'
 
-alias -g L='|l'
+alias -g L='|vim - -c "set nomodified"'
 alias -g LL='|less'
 alias -g H='|head'
 alias -g T='|tail'
