@@ -45,7 +45,6 @@ nnoremap <Esc>j <C-w>j
 nnoremap <Esc>k <C-w>k
 nnoremap <Esc>l <C-w>l
 nnoremap <Esc>c <C-w>c
-nnoremap <C-n> :NERDTreeTabsToggle<CR>
 nnoremap <C-t> :tabe<Space>
 nnoremap <Space> zz
 nnoremap <Leader>w :w<CR>
