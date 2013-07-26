@@ -11,6 +11,7 @@ colorscheme solarized
 
 set autoindent
 set relativenumber
+set showcmd
 set smarttab
 set wildmenu
 set nofoldenable
@@ -57,21 +58,14 @@ inoremap <C-q> <Esc>:qa<CR>
 vnoremap <C-q> <Esc>:qa<CR>
 cnoremap w!! w !sudo tee % >/dev/null
 
-autocmd BufWinEnter * set expandtab | set shiftwidth=4
-autocmd BufWinEnter *.coffee set shiftwidth=2
-autocmd BufWinEnter *.html set shiftwidth=2
-autocmd BufWinEnter *.gpp set shiftwidth=2
-autocmd BufWinEnter *.jade set shiftwidth=2
-autocmd BufWinEnter *.styl set shiftwidth=2
-autocmd BufWinEnter *.less set shiftwidth=2
-autocmd BufWinEnter *.eco set shiftwidth=2
-autocmd BufWinEnter *.rb set shiftwidth=2
-autocmd BufWinEnter Gemfile set shiftwidth=2
-autocmd BufWinEnter Rakefile set shiftwidth=2
-autocmd BufWinEnter Makefile set noexpandtab
-
-autocmd FileType xdefaults set commentstring=!\ %s
-autocmd FileType gitcommit set colorcolumn=50
+set expandtab
+set shiftwidth=4
+autocmd FileType coffee,ruby setlocal shiftwidth=2
+autocmd FileType eco,html,jade,less,stylus,sass,scss setlocal shiftwidth=2
+autocmd BufWinEnter *.gpp setlocal shiftwidth=2
+autocmd FileType make setlocal noexpandtab
+autocmd FileType xdefaults setlocal commentstring=!\ %s
+autocmd FileType gitcommit setlocal colorcolumn=50
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
