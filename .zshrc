@@ -63,7 +63,7 @@ alias ll0='/bin/ls -Flh'
 alias lla='ls -Alh'
 alias lr='ls -rt'
 
-alias l='/usr/share/vim/vim7*/macros/less.sh'
+alias l='vim -R'
 alias v='vim'
 alias mv='mv -i'
 alias cp='cp -i'

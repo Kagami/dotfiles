@@ -25,6 +25,7 @@ set scrolloff=4
 set nobackup
 set nowritebackup
 set wildignore+=*.pyc
+set cpoptions+=Z
 
 let g:netrw_list_hide='.*\.swp$'
 let g:netrw_banner=0
@@ -52,6 +53,7 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>x :x<CR>
 nnoremap <Leader>z :qa<CR>
 nnoremap <Leader>a :Ack<Space>
+cnoremap w!! w !sudo tee % > /dev/null
 
 autocmd BufWinEnter * set expandtab | set shiftwidth=4
 autocmd BufWinEnter *.coffee set shiftwidth=2
