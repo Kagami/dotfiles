@@ -29,7 +29,6 @@ set cpoptions+=Z
 
 let g:netrw_list_hide='.*\.swp$'
 let g:netrw_banner=0
-let g:netrw_browse_split=3
 let g:vim_markdown_folding_disabled=1
 let g:vim_json_syntax_conceal=0
 let g:hardtime_default_on=1
@@ -45,15 +44,18 @@ nnoremap <Esc>j <C-w>j
 nnoremap <Esc>k <C-w>k
 nnoremap <Esc>l <C-w>l
 nnoremap <Esc>c <C-w>c
-nnoremap <Space> zz
 nnoremap <C-t> :tabe<Space>
+nnoremap <Space> zz
+nnoremap <Leader>a :Ack!<Space>
+" Save and quit
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
 vnoremap <C-s> <Esc>:w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <C-q> :qa<CR>
-nnoremap <Leader>a :Ack!<Space>
-cnoremap w!! w !sudo tee % > /dev/null
+inoremap <C-q> <Esc>:qa<CR>
+vnoremap <C-q> <Esc>:qa<CR>
+cnoremap w!! w !sudo tee % >/dev/null
 
 autocmd BufWinEnter * set expandtab | set shiftwidth=4
 autocmd BufWinEnter *.coffee set shiftwidth=2
