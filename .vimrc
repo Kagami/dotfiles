@@ -14,6 +14,7 @@ set relativenumber
 set showcmd
 set smarttab
 set wildmenu
+set wildmode=list:longest
 set nofoldenable
 set ignorecase
 set smartcase
