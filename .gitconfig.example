@@ -12,7 +12,7 @@
 	sh = show
 	l = log -3
 	d = diff
-	dd = !zsh -ic 'gdd'
+	dd = diff HEAD
 	co = checkout
 	b = branch
 	cl = clone
