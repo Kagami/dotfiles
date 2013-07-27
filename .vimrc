@@ -24,12 +24,13 @@ set noshowmode
 set colorcolumn=80
 set wildignore+=*.pyc
 set cpoptions+=Z
+set nomodeline
+set backspace=indent,eol,start
 " Do not leak ack.vim output to console
 set shellpipe=>
 set nowritebackup
 set directory=~/.vim/swap
 
-let g:netrw_list_hide='.*\.swp$'
 let g:netrw_banner=0
 let g:vim_markdown_folding_disabled=1
 let g:vim_json_syntax_conceal=0
@@ -61,6 +62,9 @@ nnoremap <C-q> :qa<CR>
 inoremap <C-q> <Esc>:qa<CR>
 vnoremap <C-q> <Esc>:qa<CR>
 cnoremap w!! w !sudo tee % >/dev/null
+" Disable confusing mapping
+nnoremap Q <Nop>
+nnoremap K <Nop>
 
 set expandtab
 set shiftwidth=4
