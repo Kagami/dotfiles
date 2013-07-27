@@ -108,6 +108,7 @@ alias eav='sudo emerge -av'
 alias edel='sudo emerge -Ca'
 alias ecl='sudo emerge -ca'
 alias eworld='sudo emerge -uDNav world'
+alias esync='sudo eix-sync -w'
 
 alias g='git'
 alias ga='git add'
