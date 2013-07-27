@@ -41,16 +41,16 @@ host=`print -P %m | tr '[:lower:]' '[:upper:]'`
 PROMPT="$blue╭($green%~$blue) ($redb$host$blue)
 ╰$ $rc"
 
-function lcd() {
+function lcd {
     cd "$1" && ls -F --color
 }
-function rcd() {
+function rcd {
     cd "$1" && ls -rtF --color
 }
-function mcd() {
+function mcd {
     mkdir "$1" && cd "$1"
 }
-function dus() {
+function dus {
     if [ -n "$1" ]; then
         files=`find "$1" -mindepth 1 -maxdepth 1`
     else
@@ -67,7 +67,7 @@ alias ll0='/bin/ls -Flh'
 alias lla='ls -Alh'
 alias lr='ls -rt'
 
-function () {
+function {
     local LESS_VIM='vim -c "set nomodifiable" -c "nnoremap q :q<CR>"'
     alias l="${LESS_VIM} -R"
     alias -g L="|${LESS_VIM} -c 'set nomodified' -"
