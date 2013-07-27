@@ -29,6 +29,7 @@ set nomodeline
 set backspace=indent,eol,start
 set lazyredraw
 set fileencoding=utf-8
+set autoread
 " Do not leak ack.vim output to console
 set shellpipe=>
 set nowritebackup
@@ -37,8 +38,12 @@ set directory=~/.vim/swap
 let g:netrw_banner=0
 let g:vim_markdown_folding_disabled=1
 let g:vim_json_syntax_conceal=0
-let g:hardtime_default_on=1
 let g:ctrlp_custom_ignore={'dir': '\v/(vendor|public|node_modules)$'}
+let g:hardtime_default_on=1
+" Disable "-" for figutive
+let g:list_of_normal_keys=[
+    \ "h", "j", "k", "l", "+",
+    \ "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 
 let mapleader=','
 nnoremap <C-h> :tabprevious<CR>
