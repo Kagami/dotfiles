@@ -22,12 +22,12 @@ set nohlsearch
 set laststatus=2
 set noshowmode
 set colorcolumn=80
-set nobackup
-set nowritebackup
 set wildignore+=*.pyc
 set cpoptions+=Z
 " Do not leak ack.vim output to console
 set shellpipe=>
+set nowritebackup
+set directory=~/.vim/swap
 
 let g:netrw_list_hide='.*\.swp$'
 let g:netrw_banner=0
