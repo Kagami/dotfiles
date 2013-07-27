@@ -61,7 +61,8 @@ nnoremap <Leader>h :set hlsearch<CR>
 nnoremap <Leader>nh :set nohlsearch<CR>
 nnoremap <C-n> :NERDTreeTabsToggle<CR>
 nnoremap <Leader>a :Ack!<Space>
-nnoremap <Leader>g :Silent Git<Space>
+nnoremap <Leader>g :Git<Space>
+nnoremap <Leader>sg :Silent Git<Space>
 " Save and quit
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
