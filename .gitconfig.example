@@ -6,4 +6,14 @@
 [push]
 	default = simple
 [alias]
+	a = add
+	c = commit
+	s = status
+	sh = show
+	l = log -3
+	d = diff
+	dd = !zsh -ic 'gdd'
 	co = checkout
+	b = branch
+	cl = clone
+	r = remote
