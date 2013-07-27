@@ -55,12 +55,13 @@ nnoremap <Esc>j <C-w>j
 nnoremap <Esc>k <C-w>k
 nnoremap <Esc>l <C-w>l
 nnoremap <Esc>c <C-w>c
-nnoremap <C-t> :tabe<Space>
 nnoremap <Space> zz
-nnoremap <C-n> :NERDTreeTabsToggle<CR>
-nnoremap <Leader>a :Ack!<Space>
+nnoremap <C-t> :tabe<Space>
 nnoremap <Leader>h :set hlsearch<CR>
 nnoremap <Leader>nh :set nohlsearch<CR>
+nnoremap <C-n> :NERDTreeTabsToggle<CR>
+nnoremap <Leader>a :Ack!<Space>
+nnoremap <Leader>g :Silent Git<Space>
 " Save and quit
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
@@ -99,3 +100,6 @@ if ! has('gui_running')
         autocmd InsertLeave * set timeoutlen=1000
     augroup END
 endif
+
+command -nargs=1 Silent
+    \ execute ':silent '.<q-args> | execute ':redraw!'
