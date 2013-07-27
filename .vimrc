@@ -14,7 +14,7 @@ set relativenumber
 set showcmd
 set smarttab
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,full
 set nofoldenable
 set ignorecase
 set smartcase
@@ -27,6 +27,8 @@ set wildignore+=*.pyc
 set cpoptions+=Z
 set nomodeline
 set backspace=indent,eol,start
+set lazyredraw
+set fileencoding=utf-8
 " Do not leak ack.vim output to console
 set shellpipe=>
 set nowritebackup
