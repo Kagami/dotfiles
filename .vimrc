@@ -47,6 +47,7 @@ nnoremap <Esc>l <C-w>l
 nnoremap <Esc>c <C-w>c
 nnoremap <C-t> :tabe<Space>
 nnoremap <Space> zz
+nnoremap <C-n> :NERDTreeTabsToggle<CR>
 nnoremap <Leader>a :Ack!<Space>
 nnoremap <Leader>h :set hlsearch<CR>
 nnoremap <Leader>nh :set nohlsearch<CR>
