@@ -67,7 +67,12 @@ alias ll0='/bin/ls -Flh'
 alias lla='ls -Alh'
 alias lr='ls -rt'
 
-alias l='vim -R'
+function () {
+    local LESS_VIM='vim -c "set nomodifiable" -c "nnoremap q :q<CR>"'
+    alias l="${LESS_VIM} -R"
+    alias -g L="|${LESS_VIM} -c 'set nomodified' -"
+}
+
 alias v='vim'
 alias mv='mv -i'
 alias cp='cp -i'
@@ -124,7 +129,6 @@ alias gush='git push'
 alias gull='git pull'
 alias gr='git remote'
 
-alias -g L='|vim - -c "set nomodified"'
 alias -g LL='|less'
 alias -g H='|head'
 alias -g T='|tail'
