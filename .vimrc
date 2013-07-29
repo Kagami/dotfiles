@@ -56,9 +56,11 @@ nnoremap <Esc>k <C-w>k
 nnoremap <Esc>l <C-w>l
 nnoremap <Esc>c <C-w>c
 nnoremap <Space> zz
+nnoremap Y y$
 nnoremap <C-t> :tabe<Space>
 nnoremap <Leader>h :set hlsearch<CR>
 nnoremap <Leader>nh :set nohlsearch<CR>
+nnoremap <Leader>so :source $MYVIMRC<CR>
 nnoremap <C-n> :NERDTreeTabsToggle<CR>
 nnoremap <Leader>a :Ack!<Space>
 nnoremap <Leader>gg :Git<Space>
