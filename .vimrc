@@ -107,5 +107,5 @@ if ! has('gui_running')
     augroup END
 endif
 
-command -nargs=1 Silent
+command! -nargs=1 Silent
     \ execute ':silent '.<q-args> | execute ':redraw!'
