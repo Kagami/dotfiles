@@ -61,8 +61,12 @@ nnoremap <Leader>h :set hlsearch<CR>
 nnoremap <Leader>nh :set nohlsearch<CR>
 nnoremap <C-n> :NERDTreeTabsToggle<CR>
 nnoremap <Leader>a :Ack!<Space>
-nnoremap <Leader>g :Git<Space>
+nnoremap <Leader>gg :Git<Space>
 nnoremap <Leader>sg :Silent Git<Space>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gw :Gwrite<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gl :Glog<CR>
 " Save and quit
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
@@ -78,6 +82,7 @@ nnoremap K <Nop>
 
 set expandtab
 set shiftwidth=4
+set tabstop=4
 autocmd FileType coffee,ruby setlocal shiftwidth=2
 autocmd FileType eco,html,jade,less,stylus,sass,scss setlocal shiftwidth=2
 autocmd BufWinEnter *.gpp setlocal shiftwidth=2
