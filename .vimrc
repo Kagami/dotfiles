@@ -62,6 +62,7 @@ nnoremap <Leader>h :set hlsearch<CR>
 nnoremap <Leader>nh :set nohlsearch<CR>
 nnoremap <Leader>so :source $MYVIMRC<CR>
 nnoremap <C-n> :NERDTreeTabsToggle<CR>
+nnoremap <Leader>cc :CtrlPClearCache<CR>
 nnoremap <Leader>a :Ack!<Space>
 nnoremap <Leader>gg :Git<Space>
 nnoremap <Leader>sg :Silent Git<Space>
