@@ -91,7 +91,7 @@ set tabstop=4
 autocmd FileType coffee,ruby setlocal shiftwidth=2
 autocmd FileType eco,html,jade,less,stylus,sass,scss,json setlocal shiftwidth=2
 autocmd BufWinEnter *.gpp setlocal shiftwidth=2
-autocmd FileType make setlocal noexpandtab
+autocmd FileType make,gitconfig setlocal noexpandtab
 autocmd FileType xdefaults setlocal commentstring=!\ %s
 autocmd FileType gitcommit setlocal colorcolumn=50
 

@@ -17,7 +17,13 @@
 	b = branch
 	cl = clone
 	r = remote
+	ch = cherry-pick
+	m = merge
+	mt = mergetool --no-prompt
+	rb = rebase
 [merge]
 	tool = meld
 [mergetool]
 	keepBackup = false
+[mergetool "meld"]
+	cmd = meld --auto-merge --output "$MERGED" "$LOCAL" "$BASE" "$REMOTE"
