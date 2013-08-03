@@ -107,7 +107,7 @@ myLayoutHook =
     smartBorders $
     onWorkspace "1" (makeTiled (7%10) ||| fixHtml5Fullscreen ||| Full) $
     onWorkspace "2" (makeTiled (11%20) ||| mirror) $
-    onWorkspace "3" (coding ||| tiled) $
+    onWorkspace "3" (coding ||| Full) $
     onWorkspace "4" (makeTiled (7%10) ||| mirror) $
     tiled ||| mirror
   where

@@ -17,3 +17,7 @@
 	b = branch
 	cl = clone
 	r = remote
+[merge]
+	tool = meld
+[mergetool]
+	keepBackup = false
