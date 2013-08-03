@@ -38,7 +38,8 @@ set directory=~/.vim/swap
 let g:netrw_banner=0
 let g:vim_markdown_folding_disabled=1
 let g:vim_json_syntax_conceal=0
-let g:ctrlp_custom_ignore={'dir': '\v/(vendor|public|node_modules)$'}
+let g:ctrlp_custom_ignore={
+    \ 'dir': '\v/(vendor|bower_components|public|node_modules)$'}
 let g:hardtime_default_on=1
 " Disable "-" for figutive
 let g:list_of_normal_keys=[
@@ -87,7 +88,7 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 autocmd FileType coffee,ruby setlocal shiftwidth=2
-autocmd FileType eco,html,jade,less,stylus,sass,scss setlocal shiftwidth=2
+autocmd FileType eco,html,jade,less,stylus,sass,scss,json setlocal shiftwidth=2
 autocmd BufWinEnter *.gpp setlocal shiftwidth=2
 autocmd FileType make setlocal noexpandtab
 autocmd FileType xdefaults setlocal commentstring=!\ %s
