@@ -47,6 +47,7 @@ let g:list_of_normal_keys=[
     \ "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 
 let mapleader=','
+call togglebg#map("<Leader>tb")
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 nnoremap <Tab> <C-w>w
