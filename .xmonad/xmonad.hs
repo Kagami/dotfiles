@@ -157,6 +157,7 @@ myStartupHook = do
         spawn "xset r rate 400 30"
         spawn "feh --no-fehbg --bg-center /media/hdd/images/diff/wallpaper.jpg"
         spawn "xsetroot -cursor_name left_ptr"
+        spawn "wmname LG3D"
         -- Spawn all needed apps
         spawn "stardict"
         spawnOn "1" "firefox-bin"
