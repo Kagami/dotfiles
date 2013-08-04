@@ -30,6 +30,7 @@ set backspace=indent,eol,start
 set lazyredraw
 set fileencoding=utf-8
 set autoread
+set sessionoptions-=options
 " Do not leak ack.vim output to console
 set shellpipe=>
 set nowritebackup
