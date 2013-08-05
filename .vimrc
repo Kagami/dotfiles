@@ -72,7 +72,7 @@ nnoremap <Leader>sg :Silent Git<Space>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gl :Glog<CR>
+nnoremap <Leader>gl :Silent Git l<CR>
 " Save and quit
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>

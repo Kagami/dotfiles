@@ -27,3 +27,5 @@
 	keepBackup = false
 [mergetool "meld"]
 	cmd = meld --auto-merge --output "$MERGED" "$LOCAL" "$BASE" "$REMOTE"
+[core]
+	pager = LESS=RSXc less
