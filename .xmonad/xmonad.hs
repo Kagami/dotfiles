@@ -109,7 +109,7 @@ myLayoutHook =
     onWorkspace "2" (makeTiled (11%20) ||| mirror) $
     onWorkspace "3" (coding ||| Full) $
     onWorkspace "4" (makeTiled (7%10) ||| mirror) $
-    tiled ||| mirror
+    tiled ||| Full
   where
     fixHtml5Fullscreen = noBorders $ fullscreenFull $ makeTiled (7%10)
     coding = makeTiled (1074%1920)
@@ -129,6 +129,7 @@ myManageHook = composeAll
     , className =? "Gajim" <&&> role /=? "roster" --> doFloat
     , className =? "Firefox" <&&> role /=? "browser" --> doFloat
     , className =? "Wine" --> doFloat
+    , className =? "java-lang-Thread" --> doFloat
     ]
   where
     q /=? x = fmap (/= x) q
