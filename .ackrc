@@ -6,5 +6,6 @@
 --ignore-dir=bower_components
 --ignore-dir=public
 --ignore-dir=node_modules
+--ignore-dir=tests
 --smart-case
 --sort-files
