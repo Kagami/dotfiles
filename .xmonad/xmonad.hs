@@ -8,7 +8,7 @@ import qualified Data.Map as M
 
 import XMonad
 import XMonad.Actions.SpawnOn (manageSpawn, spawnOn, spawnAndDo)
-import XMonad.Hooks.ManageDocks (avoidStruts)
+import XMonad.Hooks.ManageDocks (avoidStruts, manageDocks)
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 import XMonad.Layout.Combo (combineTwo)
 import XMonad.Layout.Fullscreen (fullscreenEventHook, fullscreenFull)
@@ -117,12 +117,14 @@ myLayoutHook =
     tiled = makeTiled (1%2)
     makeTiled n = Tall 1 (1%100) n
 
-myManageHook = composeAll
+myManageHook = manageDocks <+> composeAll
     [ manageSpawn
     , namedScratchpadManageHook scratchpads
 
     , isFullscreen --> doFullFloat
     , className =? "MPlayer" --> doFloat
+    , className =? "mplayer2" --> doFloat
+    , className =? "mpv" --> doFloat
     , className =? "Gimp" --> doFloat
     , className =? "Stardict" --> doFloat
     , className =? "feh" --> doFloat
@@ -159,6 +161,7 @@ myStartupHook = do
         spawn "feh --no-fehbg --bg-center /media/hdd/images/diff/wallpaper.jpg"
         spawn "xsetroot -cursor_name left_ptr"
         spawn "wmname LG3D"
+        spawn "fbpanel"
         -- Spawn all needed apps
         spawn "stardict"
         spawnOn "1" "firefox-bin"
@@ -166,7 +169,7 @@ myStartupHook = do
         spawnOn "2" "gajim"
         spawnAndDo (doSwapDown "2" <+> doShift "2") "thunderbird-bin"
         --replicateM_ 3 $ spawnOn "3" $ myTerminal ++ " --disable-server"
-        spawnOn "4" "thunar"
+        spawnOn "4" "thunar /media/hdd/downloads/"
         spawnAndDo (doSwapDown "4" <+> doShift "4") "transmission-gtk"
 
 -- | Do swapDown on the specified workspace.
