@@ -86,7 +86,6 @@ alias scr='screen'
 alias am='alsamixer'
 alias m='mpv'
 alias f='feh -drFSfilename'
-alias o='exo-open'
 alias yo='noglob youtube-dl -t'
 alias myo='noglob myo'
 alias vv='vim ~/.vimrc'
@@ -99,6 +98,11 @@ alias brunch='./node_modules/.bin/brunch'
 alias grunt='./node_modules/.bin/grunt'
 alias bower='./node_modules/.bin/bower'
 alias bowls='bower list --offline'
+if which exo-open &>/dev/null; then
+    alias o='exo-open'
+else
+    alias o='xdg-open'
+fi
 if ! which hd &>/dev/null; then
     alias hd='hexdump -C'
 fi
