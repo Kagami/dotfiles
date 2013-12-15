@@ -150,7 +150,7 @@ alias -g T='|tail'
 alias -g G='|grep'
 alias -g W='|wc -l'
 
-hdd=/media/hdd
+hash -d hdd=/media/hdd
 
 ###
 # Special keys
