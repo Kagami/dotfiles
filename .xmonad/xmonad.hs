@@ -8,7 +8,7 @@ import qualified Data.Map as M
 
 import XMonad
 import XMonad.Actions.SpawnOn (manageSpawn, spawnOn, spawnAndDo)
-import XMonad.Hooks.ManageDocks (avoidStruts, manageDocks)
+import XMonad.Hooks.ManageDocks (ToggleStruts(..), avoidStruts, manageDocks)
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 import XMonad.Layout.Combo (combineTwo)
 import XMonad.Layout.Fullscreen (fullscreenEventHook, fullscreenFull)
@@ -69,6 +69,7 @@ myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
     , ("M-,", sendMessage $ IncMasterN 1)
     , ("M-.", sendMessage $ IncMasterN (-1))
     , ("M-c", kill)
+    , ("M-b", sendMessage ToggleStruts)
 
     , ("<F12>", updateConfig)
     , ("M-<F12>", io exitSuccess)
