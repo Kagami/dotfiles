@@ -74,6 +74,7 @@ function {
 }
 
 alias v='vim'
+alias sv='sudo -E vim'
 alias mv='mv -i'
 alias cp='cp -i'
 alias df='df -h'
@@ -117,13 +118,15 @@ alias aptu='sudo apt-get update'
 alias aptauto='sudo apt-get autoremove'
 
 alias e='eix'
+alias em='sudo emerge'
 alias eq='equery'
 alias epv='emerge -pv'
 alias eav='sudo emerge -av'
 alias edel='sudo emerge -Ca'
 alias ecl='sudo emerge -ca'
-alias eworld='sudo emerge -uDNav world'
 alias esync='sudo eix-sync -w'
+alias eworld='sudo emerge -uDNav world'
+alias edeep='sudo emerge -uDNav world --with-bdeps=y --complete-graph=y'
 
 alias g='git'
 alias ga='git add'

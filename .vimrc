@@ -82,7 +82,7 @@ nnoremap <Leader>q :q<CR>
 nnoremap <C-q> :qa<CR>
 inoremap <C-q> <Esc>:qa<CR>
 vnoremap <C-q> <Esc>:qa<CR>
-cnoremap w!! w !sudo dd of="%"
+cnoremap W! w !sudo dd of="%"
 " Disable confusing mapping
 nnoremap Q <Nop>
 nnoremap K <Nop>
