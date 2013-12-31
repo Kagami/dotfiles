@@ -228,4 +228,13 @@ function dus {
         sort -h
 }
 
+function eqw {
+    local filename=`equery which $1`
+    [ $filename ] && l $filename
+}
+
+function rst {
+    echo -n '\e]0;\a'
+}
+
 }
