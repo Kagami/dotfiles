@@ -15,15 +15,8 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 
-WORDCHARS='*?_.-[]~=&;!#$%^(){}<>'
 autoload -U compinit && compinit
 zmodload zsh/complist
-zstyle ':completion:*' menu yes select
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-zstyle ':completion:*:default' list-colors '${LS_COLORS}'
-zstyle ':completion:*:cd:*' ignore-parents parent pwd
-setopt BRACE_CCL
-
 bindkey -e
 bindkey -M menuselect '^M' .accept-line
 bindkey -M menuselect '/' accept-and-infer-next-history
@@ -35,14 +28,39 @@ bindkey -M menuselect 'k' up-line-or-history
 bindkey -M menuselect 'l' forward-char
 bindkey '^T' history-incremental-search-forward
 
+WORDCHARS='*?_.-[]~=&;!#$%^(){}<>'
+zstyle ':completion:*' menu yes select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*:default' list-colors '${LS_COLORS}'
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+setopt BRACE_CCL
+
 autoload -U colors && colors
-local blue="%{$fg_no_bold[blue]%}"
-local green="%{$fg_no_bold[green]%}"
-local redb="%{$fg_bold[red]%}"
-local rc="%{$reset_color%}"
-local host=`print -P %m`
-PROMPT="$blue╭($green%~$blue) ($redb${host:u}$blue)
-╰$ $rc"
+reset=%{$reset_color%}
+blue=%{$fg_no_bold[blue]%}
+green=%{$fg_no_bold[green]%}
+GREEN=%{$fg_bold[green]%}
+yellow=%{$fg_no_bold[yellow]%}
+YELLOW=%{$fg_bold[yellow]%}
+red=%{$fg_no_bold[red]%}
+RED=%{$fg_bold[red]%}
+host=`print -P %m`
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git*:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr M
+zstyle ':vcs_info:*' unstagedstr M
+zstyle ':vcs_info:git*' formats "$YELLOW%b:$green%c$red%u"
+
+function precmd {
+    local -a parts
+    vcs_info
+    parts=( "$blue╭($green%~$blue) ($RED${host:u}$blue)" )
+    [ $vcs_info_msg_0_ ] && parts+=( " ($reset$vcs_info_msg_0_$reset)" )
+    parts+=( $'\n' "╰$ $reset" )
+    PROMPT=${(j::)parts}
+}
 
 alias ls='ls -F --color'
 alias ls0='/bin/ls -F'
