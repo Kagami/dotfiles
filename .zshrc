@@ -1,3 +1,6 @@
+# Run everything inside anonymous function.
+function {
+
 [ -f ~/.zprofile ] && . ~/.zprofile
 # To make C-s/C-q work
 stty start undef
@@ -33,30 +36,32 @@ bindkey -M menuselect 'l' forward-char
 bindkey '^T' history-incremental-search-forward
 
 autoload -U colors && colors
-blue=%{$fg_no_bold[blue]%}
-green=%{$fg_no_bold[green]%}
-redb=%{$fg_bold[red]%}
-rc=%{$reset_color%}
-host=`print -P %m | tr '[:lower:]' '[:upper:]'`
-PROMPT="$blue╭($green%~$blue) ($redb$host$blue)
+local blue="%{$fg_no_bold[blue]%}"
+local green="%{$fg_no_bold[green]%}"
+local redb="%{$fg_bold[red]%}"
+local rc="%{$reset_color%}"
+local host=`print -P %m`
+PROMPT="$blue╭($green%~$blue) ($redb${host:u}$blue)
 ╰$ $rc"
 
 function lcd {
-    cd "$1" && ls -F --color
+    cd $1 && ls -F --color
 }
 function rcd {
-    cd "$1" && ls -rtF --color
+    cd $1 && ls -rtF --color
 }
 function mcd {
-    mkdir "$1" && cd "$1"
+    mkdir $1 && cd $1
 }
 function dus {
-    if [ -n "$1" ]; then
-        files=`find "$1" -mindepth 1 -maxdepth 1`
-    else
-        files=`find -mindepth 1 -maxdepth 1`
-    fi
-    echo -n "$files" | sed 's#^\./##' | xargs -d '\n' du -sh | sort -h
+    local -a args
+    [ $1 ] && args+=( $1 )
+    args+=( -mindepth 1 -maxdepth 1 )
+    find $args[*] |\
+        while read file; do
+            du -sh ${file#./}
+        done |\
+        sort -h
 }
 
 alias ls='ls -F --color'
@@ -66,12 +71,6 @@ alias ll='ls -lh'
 alias ll0='/bin/ls -Flh'
 alias lla='ls -Alh'
 alias lr='ls -rt'
-
-function {
-    local LESS_VIM='vim -c "set nomodifiable" -c "nnoremap q :q<CR>"'
-    alias l="${LESS_VIM} -R"
-    alias -g L="|${LESS_VIM} -c 'set nomodified' -"
-}
 
 alias v='vim'
 alias sv='sudo -E vim'
@@ -99,6 +98,11 @@ alias brunch='./node_modules/.bin/brunch'
 alias grunt='./node_modules/.bin/grunt'
 alias bower='./node_modules/.bin/bower'
 alias bowls='bower list --offline'
+
+local LESS_VIM='vim -c "set nomodifiable" -c "nnoremap q :q<CR>"'
+alias l="${LESS_VIM} -R"
+alias -g L="|${LESS_VIM} -c 'set nomodified' -"
+
 if which exo-open &>/dev/null; then
     alias o='exo-open'
 else
@@ -162,7 +166,7 @@ hash -d hdd=/media/hdd
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
-typeset -A key
+local -A key
 
 key[Home]=${terminfo[khome]}
 
@@ -198,3 +202,5 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
+
+}
