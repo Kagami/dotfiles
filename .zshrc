@@ -2,7 +2,7 @@
 function {
 
 [ -f ~/.zprofile ] && . ~/.zprofile
-# To make C-s/C-q work
+# To make C-s/C-q work.
 stty start undef
 stty stop undef
 
@@ -27,6 +27,7 @@ bindkey -M menuselect 'j' down-line-or-history
 bindkey -M menuselect 'k' up-line-or-history
 bindkey -M menuselect 'l' forward-char
 bindkey '^T' history-incremental-search-forward
+setopt AUTOCD
 
 WORDCHARS='*?_.-[]~=&;!#$%^(){}<>'
 zstyle ':completion:*' menu yes select
@@ -57,10 +58,10 @@ zstyle ':vcs_info:git*' formats "$WHITE%b$reset:%c%u"
 
 host=`print -P %m`
 function precmd {
-    local -a parts
     vcs_info
+    local -a parts
     parts=( "$blue╭($green%~$blue) ($RED${host:u}$blue)" )
-    vcs_part=${vcs_info_msg_0_%:}
+    local vcs_part=${vcs_info_msg_0_%:}
     [ $vcs_part ] && parts+=( " ($vcs_part$blue)" )
     parts+=( $'\n' "╰$ $reset" )
     PROMPT=${(j::)parts}
@@ -205,40 +206,40 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-finish
 fi
 
+}
+
 ###
 # Helpers.
 ###
 
 function lcd {
-    cd $1 && command ls -F --color
+    cd $1 && ls
 }
 
 function rcd {
-    cd $1 && command ls -rtF --color
+    cd $1 && ls -r
 }
 
 function mcd {
     mkdir $1 && cd $1
 }
 
+# Info about occupied space.
 function dus {
-    local -a args
-    [ $1 ] && args+=( $1 )
-    args+=( -mindepth 1 -maxdepth 1 )
-    find $args[*] |\
+    find $1 -mindepth 1 -maxdepth 1 |\
         while read file; do
             command du -sh ${file#./}
         done |\
         sort -h
 }
 
+# Show package's ebuild.
 function eqw {
     local filename=`equery which $1`
     [ $filename ] && l $filename
 }
 
+# Clear dynamic terminal title.
 function rst {
     echo -n '\e]0;\a'
-}
-
 }
