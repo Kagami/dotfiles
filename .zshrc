@@ -38,26 +38,30 @@ setopt BRACE_CCL
 autoload -U colors && colors
 reset=%{$reset_color%}
 blue=%{$fg_no_bold[blue]%}
+BLUE=%{$fg_bold[blue]%}
 green=%{$fg_no_bold[green]%}
 GREEN=%{$fg_bold[green]%}
 yellow=%{$fg_no_bold[yellow]%}
 YELLOW=%{$fg_bold[yellow]%}
 red=%{$fg_no_bold[red]%}
 RED=%{$fg_bold[red]%}
-host=`print -P %m`
+white=%{$fg_no_bold[white]%}
+WHITE=%{$fg_bold[white]%}
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr M
-zstyle ':vcs_info:*' unstagedstr M
-zstyle ':vcs_info:git*' formats "$YELLOW%b:$green%c$red%u"
+zstyle ':vcs_info:*' stagedstr "${green}M"
+zstyle ':vcs_info:*' unstagedstr "${red}M"
+zstyle ':vcs_info:git*' formats "$WHITE%b$reset:%c%u"
 
+host=`print -P %m`
 function precmd {
     local -a parts
     vcs_info
     parts=( "$blue╭($green%~$blue) ($RED${host:u}$blue)" )
-    [ $vcs_info_msg_0_ ] && parts+=( " ($reset$vcs_info_msg_0_$reset)" )
+    vcs_part=${vcs_info_msg_0_%:}
+    [ $vcs_part ] && parts+=( " ($vcs_part$blue)" )
     parts+=( $'\n' "╰$ $reset" )
     PROMPT=${(j::)parts}
 }
