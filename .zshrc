@@ -6,8 +6,12 @@ function {
 stty start undef
 stty stop undef
 
+setopt EXTENDED_GLOB
+setopt AUTO_CD
+setopt BRACE_CCL
 setopt NO_PROMPT_CR
-HISTFILE=~/.zsh_history
+
+HISTFILE=~/.zshhistory
 HISTSIZE=50000
 SAVEHIST=50000
 setopt INC_APPEND_HISTORY
@@ -27,14 +31,12 @@ bindkey -M menuselect 'j' down-line-or-history
 bindkey -M menuselect 'k' up-line-or-history
 bindkey -M menuselect 'l' forward-char
 bindkey '^T' history-incremental-search-forward
-setopt AUTOCD
 
 WORDCHARS='*?_.-[]~=&;!#$%^(){}<>'
 zstyle ':completion:*' menu yes select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*:default' list-colors '${LS_COLORS}'
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
-setopt BRACE_CCL
 
 autoload -U colors && colors
 reset=%{$reset_color%}
@@ -68,10 +70,10 @@ function precmd {
 }
 
 alias ls='ls -F --color'
-alias ls0='/bin/ls -F'
+alias ls0='command ls -F'
 alias lsa='ls -A'
 alias ll='ls -lh'
-alias ll0='/bin/ls -Flh'
+alias ll0='command ls -Flh'
 alias lla='ls -Alh'
 alias lr='ls -rt'
 
@@ -97,9 +99,9 @@ alias vx='vim ~/.xmonad/xmonad.hs'
 alias z='source ~/.zshrc'
 alias gdot='git --git-dir=$HOME/code/dotfiles.git --work-tree=$HOME'
 alias gdup='gdot pull && gdot submodule init && gdot submodule update'
-alias brunch='./node_modules/.bin/brunch'
-alias grunt='./node_modules/.bin/grunt'
-alias bower='./node_modules/.bin/bower'
+alias brunch='node_modules/.bin/brunch'
+alias grunt='node_modules/.bin/grunt'
+alias bower='node_modules/.bin/bower'
 alias bowls='bower list --offline'
 
 local LESS_VIM='vim -c "set nomodifiable" -c "nnoremap q :q<CR>"'
@@ -150,7 +152,7 @@ alias gush='git push'
 alias gull='git pull'
 alias gr='git remote'
 alias gch='git cherry-pick'
-alias gm='git merge'
+alias gm='git merge --no-ff'
 alias gmt='git mergetool --no-prompt'
 alias grb='git rebase'
 
@@ -235,11 +237,18 @@ function dus {
 
 # Show package's ebuild.
 function eqw {
-    local filename=`equery which $1`
-    [ $filename ] && l $filename
+    local file=`equery which $1`
+    [ $file ] && l $file
 }
 
 # Clear dynamic terminal title.
 function rst {
     echo -n '\e]0;\a'
 }
+
+# Hack to run commands without closing the shell.
+# See <http://superuser.com/q/91881> for details.
+if [[ $1 == eval ]]; then
+    "$@"
+    set --
+fi

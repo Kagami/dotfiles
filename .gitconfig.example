@@ -18,7 +18,7 @@
 	cl = clone
 	r = remote
 	ch = cherry-pick
-	m = merge
+	m = merge --no-ff
 	mt = mergetool --no-prompt
 	rb = rebase
 [merge]

@@ -22,12 +22,14 @@ import XMonad.Util.NamedScratchpad (NamedScratchpad(..), namedScratchpadAction,
                                     namedScratchpadManageHook, customFloating)
 import qualified XMonad.StackSet as W
 
+import XMonad.Extra (initJsDevEnv)
+
 main :: IO ()
 main = xmonad defaultConfig
     -- Simple stuff
     { terminal = myTerminal
     , modMask = mod4Mask
-    , workspaces = map show [1..5]
+    , workspaces = map show [1..8]
     , focusFollowsMouse = True
     , borderWidth = 2
     -- Key bindings
@@ -53,6 +55,7 @@ myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
     , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%-")
     , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+")
     , ("<Print>", spawn "import -window root /tmp/scr.png")
+    , ("M-x j", initJsDevEnv)
 
     , ("M1-<Tab>", windows W.focusDown)
     , ("M-j", windows W.focusDown)
@@ -110,6 +113,7 @@ myLayoutHook =
     onWorkspace "2" (makeTiled (11%20) ||| mirror) $
     onWorkspace "3" (coding ||| Full) $
     onWorkspace "4" (makeTiled (7%10) ||| mirror) $
+    onWorkspace "5" coding $
     tiled ||| Full
   where
     fixHtml5Fullscreen = noBorders $ fullscreenFull $ makeTiled (7%10)
