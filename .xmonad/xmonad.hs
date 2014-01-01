@@ -1,6 +1,7 @@
+{-# OPTIONS_GHC -Wall -Werror #-}
 {-# LANGUAGE RecordWildCards #-}
 
-import Control.Monad (when, unless, replicateM_)
+import Control.Monad (when, unless)
 import Data.Ratio ((%))
 import System.Environment (getArgs)
 import System.Exit (exitSuccess)
@@ -9,13 +10,8 @@ import qualified Data.Map as M
 import XMonad
 import XMonad.Actions.SpawnOn (manageSpawn, spawnOn, spawnAndDo)
 import XMonad.Hooks.ManageDocks (ToggleStruts(..), avoidStruts, manageDocks)
-import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
-import XMonad.Layout.Combo (combineTwo)
-import XMonad.Layout.Fullscreen (fullscreenEventHook, fullscreenFull)
-import XMonad.Layout.NoBorders (smartBorders, noBorders)
+import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.PerWorkspace (onWorkspace)
-import XMonad.Layout.Simplest (Simplest(..))
-import XMonad.Layout.TwoPane (TwoPane(..))
 import XMonad.StackSet (StackSet, view, currentTag)
 import XMonad.Util.EZConfig (mkKeymap)
 import XMonad.Util.NamedScratchpad (NamedScratchpad(..), namedScratchpadAction,
@@ -29,7 +25,7 @@ main = xmonad defaultConfig
     -- Simple stuff
     { terminal = myTerminal
     , modMask = mod4Mask
-    , workspaces = map show [1..8]
+    , workspaces = myWorkspaces
     , focusFollowsMouse = True
     , borderWidth = 2
     -- Key bindings
@@ -39,12 +35,33 @@ main = xmonad defaultConfig
     , layoutHook = myLayoutHook
     , manageHook = myManageHook
     , startupHook = myStartupHook
-    , handleEventHook = fullscreenEventHook
     }
+  where
+    myLayoutHook =
+        avoidStruts $
+        smartBorders $
+        onWorkspace "1" (task ||| Full) $
+        onWorkspace "2" (makeTiled (11%20)) $
+        onWorkspace "3" coding $
+        onWorkspace "4" task $
+        onWorkspace "5" coding $
+        tiled ||| Full
+      where
+        task = makeTiled (7%10)
+        coding = makeTiled (1074%1920)
+        tiled = makeTiled (1%2)
+        makeTiled n = Tall 1 (1%100) n
+
+myWorkspaces :: [String]
+myWorkspaces = map show wss'
+  where
+    wss' :: [Integer]
+    wss' = [1..8]
 
 myTerminal :: String
 myTerminal = "xfce4-terminal"
 
+myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
     [ ("M-e", spawn terminal)
     , ("M-p", spawn "dmenu_run_exec")
@@ -55,7 +72,6 @@ myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
     , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%-")
     , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+")
     , ("<Print>", spawn "import -window root /tmp/scr.png")
-    , ("M-x j", initJsDevEnv)
 
     , ("M1-<Tab>", windows W.focusDown)
     , ("M-j", windows W.focusDown)
@@ -76,12 +92,15 @@ myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
 
     , ("<F12>", updateConfig)
     , ("M-<F12>", io exitSuccess)
+
+    , ("M-x j", initJsDevEnv)
+    , ("M-x f", sendMessage NextLayout >> sendMessage ToggleStruts)
     ]
     `M.union` (M.fromList $
-    [ ((mod, key), windows $ f ws)
-        | (ws, key) <- zip workspaces [xK_F1..]
+    [ ((mdf, key), windows $ f wrk)
+        | (wrk, key) <- zip workspaces [xK_F1..]
                       -- Switch to workspace
-        , (mod, f) <- [ (0, W.greedyView)
+        , (mdf, f) <- [ (0, W.greedyView)
                       -- Move window to workspace
                       , (modm, W.shift)
                       -- Move window to workspace and switch to it
@@ -97,6 +116,7 @@ myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
             -- Restart with resume
             restart "xmonad" True
 
+myMouseBindings :: XConfig Layout -> M.Map (KeyMask, Button) (Window -> X ())
 myMouseBindings _ = M.fromList $
     -- Move
     [ ((mod1Mask, button1), \w -> focus w >> mouseMoveWindow w)
@@ -106,27 +126,11 @@ myMouseBindings _ = M.fromList $
     , ((mod1Mask, button3), \w -> focus w >> mouseResizeWindow w)
     ]
 
-myLayoutHook =
-    avoidStruts $
-    smartBorders $
-    onWorkspace "1" (makeTiled (7%10) ||| fixHtml5Fullscreen ||| Full) $
-    onWorkspace "2" (makeTiled (11%20) ||| mirror) $
-    onWorkspace "3" (coding ||| Full) $
-    onWorkspace "4" (makeTiled (7%10) ||| mirror) $
-    onWorkspace "5" coding $
-    tiled ||| Full
-  where
-    fixHtml5Fullscreen = noBorders $ fullscreenFull $ makeTiled (7%10)
-    coding = makeTiled (1074%1920)
-    mirror = Mirror tiled
-    tiled = makeTiled (1%2)
-    makeTiled n = Tall 1 (1%100) n
-
-myManageHook = manageDocks <+> composeAll
-    [ manageSpawn
+myManageHook :: ManageHook
+myManageHook = composeAll
+    [ manageDocks
+    , manageSpawn
     , namedScratchpadManageHook scratchpads
-
-    , isFullscreen --> doFullFloat
     , className =? "MPlayer" --> doFloat
     , className =? "mplayer2" --> doFloat
     , className =? "mpv" --> doFloat
