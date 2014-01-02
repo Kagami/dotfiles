@@ -257,6 +257,23 @@ function rst {
     echo -n '\e]0;\a'; clear
 }
 
+# Add sed-like functionality to ack.
+function sack {
+    if [[ $# -lt 2 ]]; then
+        echo "Usage: sack <PERL EXPRESSION> <ACK OPTIONS>" >&2
+        return 1
+    fi
+    local PERL_EXPR=$1
+    shift
+    local -a FILES_TO_REPLACE
+    FILES_TO_REPLACE=("${(@f)$(ack -l $*)}")
+    if [[ -z $FILES_TO_REPLACE ]]; then
+        echo "ack doesn't find anything" >&2
+        return 1
+    fi
+    perl -i -p -e $PERL_EXPR $FILES_TO_REPLACE
+}
+
 # Hack to run commands without closing the shell.
 # See <http://superuser.com/q/91881> for details.
 if [[ $1 == eval ]]; then
