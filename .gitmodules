@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/Insertlessly"]
+	path = .vim/bundle/Insertlessly
+	url = https://github.com/Kagami/Insertlessly.git
