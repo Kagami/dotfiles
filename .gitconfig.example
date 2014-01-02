@@ -12,6 +12,7 @@
 	sh = show
 	l = log -3
 	d = diff
+	dc = diff --cached
 	dd = diff HEAD
 	co = checkout
 	b = branch

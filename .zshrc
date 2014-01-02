@@ -6,14 +6,18 @@ function {
 stty start undef
 stty stop undef
 
+# Misc.
 setopt EXTENDED_GLOB
 setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_MINUS
 setopt BRACE_CCL
 setopt NO_PROMPT_CR
+autoload -U zmv
 
 HISTFILE=~/.zshhistory
-HISTSIZE=50000
-SAVEHIST=50000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
@@ -76,11 +80,13 @@ alias ll='ls -lh'
 alias ll0='command ls -Flh'
 alias lla='ls -Alh'
 alias lr='ls -rt'
+alias lsd='ls -d'
 
 alias v='vim'
 alias sv='sudo -E vim'
 alias mv='mv -i'
 alias cp='cp -i'
+alias rm='rm -I'
 alias df='df -h'
 alias du='du -sh'
 alias free='free -m'
@@ -92,7 +98,7 @@ alias am='alsamixer'
 alias m='mpv'
 alias f='feh -drFSfilename'
 alias yo='noglob youtube-dl -t'
-alias myo='noglob myo'
+alias myo='noglob mplayer-youtube-dl'
 alias vv='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
 alias vx='vim ~/.xmonad/xmonad.hs'
@@ -103,6 +109,9 @@ alias brunch='node_modules/.bin/brunch'
 alias grunt='node_modules/.bin/grunt'
 alias bower='node_modules/.bin/bower'
 alias bowls='bower list --offline'
+alias dir='dirs -v'
+alias psgrep='ps aux | grep'
+alias zmv='noglob zmv -W'
 
 local LESS_VIM='vim -c "set nomodifiable" -c "nnoremap q :q<CR>"'
 alias l="${LESS_VIM} -R"
@@ -127,6 +136,7 @@ alias aptu='sudo apt-get update'
 alias aptauto='sudo apt-get autoremove'
 
 alias e='eix'
+alias ei='eix -I'
 alias em='sudo emerge'
 alias eq='equery'
 alias epv='emerge -pv'
@@ -144,6 +154,7 @@ alias gs='git status'
 alias gsh='git show'
 alias gl='git log -3'
 alias gd='git diff'
+alias gdc='git diff --cached'
 alias gdd='git diff HEAD'
 alias gco='git checkout'
 alias gb='git branch'
@@ -165,8 +176,8 @@ alias -g W='|wc -l'
 hash -d hdd=/media/hdd
 
 ###
-# Special keys
-# See <https://wiki.archlinux.org/index.php/Zsh#Key_Bindings>
+# Special keys. See
+# <https://wiki.archlinux.org/index.php/Zsh#Key_Bindings> for details.
 ###
 
 # create a zkbd compatible hash;
@@ -219,7 +230,7 @@ function lcd {
 }
 
 function rcd {
-    cd $1 && ls -r
+    cd $1 && ls -rt
 }
 
 function mcd {
@@ -243,7 +254,7 @@ function eqw {
 
 # Clear dynamic terminal title.
 function rst {
-    echo -n '\e]0;\a'
+    echo -n '\e]0;\a'; clear
 }
 
 # Hack to run commands without closing the shell.

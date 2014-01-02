@@ -19,10 +19,10 @@ set nofoldenable
 set ignorecase
 set smartcase
 set incsearch
-set nohlsearch
+set hlsearch
 set laststatus=2
 set noshowmode
-set colorcolumn=80
+set colorcolumn=81
 set wildignore+=*.pyc
 set cpoptions+=Z
 set nomodeline
@@ -47,6 +47,7 @@ let g:hardtime_default_on=1
 let g:list_of_normal_keys=[
     \ "h", "j", "k", "l", "+",
     \ "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+let g:insertlessly_insert_spaces = 0
 
 let mapleader=','
 call togglebg#map("<Leader>tb")
@@ -95,7 +96,7 @@ autocmd FileType eco,html,jade,less,stylus,sass,scss,json setlocal shiftwidth=2
 autocmd BufWinEnter *.gpp setlocal shiftwidth=2
 autocmd FileType make,gitconfig setlocal noexpandtab
 autocmd FileType xdefaults setlocal commentstring=!\ %s
-autocmd FileType gitcommit setlocal colorcolumn=50
+autocmd FileType gitcommit setlocal colorcolumn=51
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
