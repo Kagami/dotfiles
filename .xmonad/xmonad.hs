@@ -10,6 +10,7 @@ import qualified Data.Map as M
 import XMonad
 import XMonad.Actions.SpawnOn (manageSpawn, spawnOn, spawnAndDo)
 import XMonad.Hooks.ManageDocks (ToggleStruts(..), avoidStruts, manageDocks)
+import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.StackSet (StackSet, view, currentTag)
@@ -18,7 +19,7 @@ import XMonad.Util.NamedScratchpad (NamedScratchpad(..), namedScratchpadAction,
                                     namedScratchpadManageHook, customFloating)
 import qualified XMonad.StackSet as W
 
-import XMonad.Extra (initJsDevEnv)
+import XMonad.Extra (myTerminal, myWorkspaces, initDevEnv, initJsDevEnv)
 
 main :: IO ()
 main = xmonad defaultConfig
@@ -52,26 +53,16 @@ main = xmonad defaultConfig
         tiled = makeTiled (1%2)
         makeTiled n = Tall 1 (1%100) n
 
-myWorkspaces :: [String]
-myWorkspaces = map show wss'
-  where
-    wss' :: [Integer]
-    wss' = [1..8]
-
-myTerminal :: String
-myTerminal = "xfce4-terminal"
-
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
     [ ("M-e", spawn terminal)
     , ("M-p", spawn "dmenu_run_exec")
     , ("M-a", namedScratchpadAction scratchpads scratchpadName)
     , ("<XF86Tools>", spawn "xscreensaver-command -lock")
-    , ("<XF86Calculator>", spawn "rutracker.pl")
+    , ("<XF86Calculator>", spawn "prepare-torrents")
     , ("<XF86AudioMute>", spawn "amixer set Master toggle")
     , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%-")
     , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+")
-    , ("<Print>", spawn "import -window root /tmp/scr.png")
 
     , ("M1-<Tab>", windows W.focusDown)
     , ("M-j", windows W.focusDown)
@@ -93,6 +84,7 @@ myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
     , ("<F12>", updateConfig)
     , ("M-<F12>", io exitSuccess)
 
+    , ("M-x d", initDevEnv)
     , ("M-x j", initJsDevEnv)
     , ("M-x f", sendMessage NextLayout >> sendMessage ToggleStruts)
     ]
@@ -131,6 +123,7 @@ myManageHook = composeAll
     [ manageDocks
     , manageSpawn
     , namedScratchpadManageHook scratchpads
+    , isFullscreen --> doFullFloat
     , className =? "MPlayer" --> doFloat
     , className =? "mplayer2" --> doFloat
     , className =? "mpv" --> doFloat
@@ -166,7 +159,7 @@ myStartupHook = do
     unless ("--resume" `elem` args) $ do
         -- X related things
         spawn "xscreensaver -no-splash"
-        spawn "xset r rate 400 30"
+        spawn "xset r rate 300 50"
         spawn "feh --no-fehbg --bg-center /media/hdd/images/diff/wallpaper.jpg"
         spawn "xsetroot -cursor_name left_ptr"
         spawn "wmname LG3D"
