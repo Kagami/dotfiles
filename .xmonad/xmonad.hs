@@ -19,7 +19,8 @@ import XMonad.Util.NamedScratchpad (NamedScratchpad(..), namedScratchpadAction,
                                     namedScratchpadManageHook, customFloating)
 import qualified XMonad.StackSet as W
 
-import XMonad.Extra (myTerminal, myWorkspaces, initDevEnv, initJsDevEnv)
+import XMonad.Extra (myTerminal, myWorkspaces, initShells, initJsDevEnv,
+                     initDevEnv)
 
 main :: IO ()
 main = xmonad defaultConfig
@@ -46,6 +47,7 @@ main = xmonad defaultConfig
         onWorkspace "3" coding $
         onWorkspace "4" task $
         onWorkspace "5" coding $
+        onWorkspace "6" coding $
         tiled ||| Full
       where
         task = makeTiled (7%10)
@@ -84,8 +86,9 @@ myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
     , ("<F12>", updateConfig)
     , ("M-<F12>", io exitSuccess)
 
-    , ("M-x d", initDevEnv)
+    , ("M-x s", initShells)
     , ("M-x j", initJsDevEnv)
+    , ("M-x d", initDevEnv)
     , ("M-x f", sendMessage NextLayout >> sendMessage ToggleStruts)
     ]
     `M.union` (M.fromList $
