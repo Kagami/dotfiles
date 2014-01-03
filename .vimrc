@@ -74,13 +74,19 @@ nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
 nnoremap <Leader>n :nohlsearch<CR>
 nnoremap <Leader>so :source $MYVIMRC<CR>
 nnoremap <Leader>a :Ack!<Space>
+" Fugitive.
 nnoremap <Leader>gg :Git<Space>
 nnoremap <Leader>sg :Silent Git<Space>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gw :Gwrite<CR>
-nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gl :Silent Git l<CR>
-nnoremap <Leader>q :q<CR>
+nnoremap <Leader>gdf :Gdiff<CR>
+nnoremap <Leader>gdd :Silent Git diff<CR>
+nnoremap <Leader>gdc :Silent Git diff --cached<CR>
+nnoremap <Leader>gdh :Silent Git diff HEAD<CR>
+nnoremap <Leader>gl :Silent Git log -p<CR>
+nnoremap <Leader>gh :Silent Git show<CR>
+nnoremap <Leader>gc :Gcommit -m ''<LEFT>
+nnoremap <Leader>gac :Gcommit -am ''<LEFT>
 " Save & quit.
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
@@ -88,6 +94,7 @@ vnoremap <C-s> <Esc>:w<CR>
 nnoremap <C-q> :qa<CR>
 inoremap <C-q> <Esc>:qa<CR>
 vnoremap <C-q> <Esc>:qa<CR>
+nnoremap <Leader>q :q<CR>
 cnoremap W! w !sudo dd of="%"
 " Disable confusing hotkeys.
 nnoremap Q <Nop>

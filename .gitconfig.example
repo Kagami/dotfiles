@@ -13,7 +13,7 @@
 	l = log -3
 	d = diff
 	dc = diff --cached
-	dd = diff HEAD
+	dh = diff HEAD
 	co = checkout
 	b = branch
 	cl = clone
