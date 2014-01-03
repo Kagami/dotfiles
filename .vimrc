@@ -31,8 +31,7 @@ set lazyredraw
 set fileencoding=utf-8
 set autoread
 set sessionoptions-=options
-" Do not leak ack.vim output to console
-set shellpipe=>
+set shellpipe=>  " Do not leak ack.vim output to console
 set nowritebackup
 set directory=~/.vim/swap
 set viminfo=
@@ -40,35 +39,40 @@ set viminfo=
 let g:netrw_banner=0
 let g:vim_markdown_folding_disabled=1
 let g:vim_json_syntax_conceal=0
+let g:ctrlp_use_caching=0
 let g:ctrlp_custom_ignore={
     \ 'dir': '\v/(.*\.egg-info|vendor|bower_components|public|node_modules)$'}
 let g:hardtime_default_on=1
+let g:insertlessly_insert_spaces=0
 " Disable "-" for figutive
 let g:list_of_normal_keys=[
     \ "h", "j", "k", "l", "+",
     \ "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
-let g:insertlessly_insert_spaces = 0
 
-let mapleader=','
-call togglebg#map("<Leader>tb")
+" Basic hotkeys.
+nnoremap Y y$
+nnoremap <Space> zz
+nnoremap <C-n> :NERDTreeTabsToggle<CR>
+" Tabs.
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
+nnoremap <C-t> :tabe<Space>
+" Windows.
 nnoremap <Tab> <C-w>w
 nnoremap <S-Tab> <C-w>W
+" NOTE: A-<hjkl> doesn't work in all terminals so use hack with ESC
+" instead to map M-<hjkl> hotkeys.
 nnoremap <Esc>h <C-w>h
 nnoremap <Esc>j <C-w>j
 nnoremap <Esc>k <C-w>k
 nnoremap <Esc>l <C-w>l
 nnoremap <Esc>c <C-w>c
-nnoremap <Space> zz
-nnoremap Y y$
-nnoremap <C-t> :tabe<Space>
-nnoremap <Leader>h :set hlsearch<CR>
-nnoremap <Leader>nh :set nohlsearch<CR>
-nnoremap <Leader>nn :nohlsearch<CR>
+" Leader hotkeys.
+let mapleader=','
+call togglebg#map("<Leader>tb")  " Toggle solarized style
+nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
+nnoremap <Leader>n :nohlsearch<CR>
 nnoremap <Leader>so :source $MYVIMRC<CR>
-nnoremap <C-n> :NERDTreeTabsToggle<CR>
-nnoremap <Leader>cc :CtrlPClearCache<CR>
 nnoremap <Leader>a :Ack!<Space>
 nnoremap <Leader>gg :Git<Space>
 nnoremap <Leader>sg :Silent Git<Space>
@@ -76,16 +80,16 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gl :Silent Git l<CR>
-" Save and quit
+nnoremap <Leader>q :q<CR>
+" Save & quit.
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
 vnoremap <C-s> <Esc>:w<CR>
-nnoremap <Leader>q :q<CR>
 nnoremap <C-q> :qa<CR>
 inoremap <C-q> <Esc>:qa<CR>
 vnoremap <C-q> <Esc>:qa<CR>
 cnoremap W! w !sudo dd of="%"
-" Disable confusing mapping
+" Disable confusing hotkeys.
 nnoremap Q <Nop>
 nnoremap K <Nop>
 
@@ -108,6 +112,8 @@ autocmd BufWinLeave * call clearmatches()
 
 set langmap=ёйцукенгшщзхъфывапролджэячсмитьбю;`qwertyuiop[]asdfghjkl\;'zxcvbnm\\,.,ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>
 
+" Update statusline immediately.
+" Source: <https://powerline.readthedocs.org/en/latest/tipstricks.html>.
 if ! has('gui_running')
     set ttimeoutlen=10
     augroup FastEscape
@@ -117,5 +123,7 @@ if ! has('gui_running')
     augroup END
 endif
 
+" Redraw window after executing provided command in silent mode.
+" Without redraw ':silent' often corrupts the screen.
 command! -nargs=1 Silent
     \ execute ':silent '.<q-args> | execute ':redraw!'
