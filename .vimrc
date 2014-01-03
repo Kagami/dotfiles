@@ -65,6 +65,7 @@ nnoremap Y y$
 nnoremap <C-t> :tabe<Space>
 nnoremap <Leader>h :set hlsearch<CR>
 nnoremap <Leader>nh :set nohlsearch<CR>
+nnoremap <Leader>nn :nohlsearch<CR>
 nnoremap <Leader>so :source $MYVIMRC<CR>
 nnoremap <C-n> :NERDTreeTabsToggle<CR>
 nnoremap <Leader>cc :CtrlPClearCache<CR>
@@ -95,8 +96,9 @@ autocmd FileType coffee,ruby setlocal shiftwidth=2
 autocmd FileType eco,html,jade,less,stylus,sass,scss,json setlocal shiftwidth=2
 autocmd BufWinEnter *.gpp setlocal shiftwidth=2
 autocmd FileType make,gitconfig setlocal noexpandtab
-autocmd FileType xdefaults setlocal commentstring=!\ %s
 autocmd FileType gitcommit setlocal colorcolumn=51
+autocmd FileType xdefaults setlocal commentstring=!\ %s
+autocmd FileType c setlocal commentstring=//\ %s
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
