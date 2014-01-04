@@ -43,20 +43,28 @@ let g:ctrlp_use_caching=0
 let g:ctrlp_custom_ignore={
     \ 'dir': '\v/(.*\.egg-info|vendor|bower_components|public|node_modules)$'}
 let g:hardtime_default_on=1
-let g:insertlessly_insert_spaces=0
 " Disable "-" for figutive
 let g:list_of_normal_keys=[
     \ "h", "j", "k", "l", "+",
     \ "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 
 " Basic hotkeys.
+let mapleader=','
 nnoremap Y y$
 nnoremap <Space> zz
 nnoremap <C-n> :NERDTreeTabsToggle<CR>
+nnoremap <Leader>e :e<Space>
+nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
+nnoremap <Leader>n :nohlsearch<CR>
+nnoremap <Leader>so :source $MYVIMRC<CR>
+nnoremap <Leader>a :Ack!<Space>
+call togglebg#map("<Leader>tb")  " Make solarized light or dark
 " Tabs.
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
-nnoremap <C-t> :tabe<Space>
+nnoremap <Leader>te :tabe<Space>
+nnoremap <Leader>tn :tabn<Space>
+nnoremap <Leader>tm :tabm<Space>
 " Windows.
 nnoremap <Tab> <C-w>w
 nnoremap <S-Tab> <C-w>W
@@ -67,13 +75,6 @@ nnoremap <Esc>j <C-w>j
 nnoremap <Esc>k <C-w>k
 nnoremap <Esc>l <C-w>l
 nnoremap <Esc>c <C-w>c
-" Leader hotkeys.
-let mapleader=','
-call togglebg#map("<Leader>tb")  " Toggle solarized style
-nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
-nnoremap <Leader>n :nohlsearch<CR>
-nnoremap <Leader>so :source $MYVIMRC<CR>
-nnoremap <Leader>a :Ack!<Space>
 " Fugitive.
 nnoremap <Leader>gg :Git<Space>
 nnoremap <Leader>sg :Silent Git<Space>
@@ -95,7 +96,6 @@ nnoremap <C-q> :qa<CR>
 inoremap <C-q> <Esc>:qa<CR>
 vnoremap <C-q> <Esc>:qa<CR>
 nnoremap <Leader>q :q<CR>
-cnoremap W! w !sudo dd of="%"
 " Disable confusing hotkeys.
 nnoremap Q <Nop>
 nnoremap K <Nop>
@@ -110,6 +110,7 @@ autocmd FileType make,gitconfig setlocal noexpandtab
 autocmd FileType gitcommit setlocal colorcolumn=51
 autocmd FileType xdefaults setlocal commentstring=!\ %s
 autocmd FileType c setlocal commentstring=//\ %s
+autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
@@ -117,7 +118,7 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-set langmap=ёйцукенгшщзхъфывапролджэячсмитьбю;`qwertyuiop[]asdfghjkl\;'zxcvbnm\\,.,ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 " Update statusline immediately.
 " Source: <https://powerline.readthedocs.org/en/latest/tipstricks.html>.
