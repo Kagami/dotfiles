@@ -47,6 +47,8 @@ let g:hardtime_default_on=1
 let g:list_of_normal_keys=[
     \ "h", "j", "k", "l", "+",
     \ "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+let g:UltiSnipsEditSplit='horizontal'
+let g:UltiSnipsSnippetsDir='~/.vim/snippets'
 
 " Basic hotkeys.
 let mapleader=','
@@ -58,6 +60,7 @@ nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
 nnoremap <Leader>n :nohlsearch<CR>
 nnoremap <Leader>so :source $MYVIMRC<CR>
 nnoremap <Leader>a :Ack!<Space>
+nnoremap <Leader>se :UltiSnipsEdit<CR>
 call togglebg#map("<Leader>tb")  " Make solarized light or dark
 " Tabs.
 nnoremap <C-h> :tabprevious<CR>
