@@ -1,0 +1,22 @@
+snippet incs "System include" !b
+#include <$1.h>
+endsnippet
+
+snippet incl "Local include" !b
+#include "${1:`!p snip.rv = snip.basename`}.h"
+endsnippet
+
+snippet main "Main function" !b
+int main(int argc, char *argv[])
+{
+	$0
+
+    return 0;
+}
+endsnippet
+
+snippet foo "foo loop" !b
+for (${2:i} = 0; i < ${1:n}; $2++) {
+	$0
+}
+endsnippet

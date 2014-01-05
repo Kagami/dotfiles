@@ -48,7 +48,6 @@ let g:list_of_normal_keys=[
     \ "h", "j", "k", "l", "+",
     \ "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 let g:UltiSnipsEditSplit='horizontal'
-let g:UltiSnipsSnippetsDir='~/.vim/snippets'
 
 " Basic hotkeys.
 let mapleader=','
@@ -112,7 +111,7 @@ autocmd BufWinEnter *.gpp setlocal shiftwidth=2
 autocmd FileType make,gitconfig setlocal noexpandtab
 autocmd FileType gitcommit setlocal colorcolumn=51
 autocmd FileType xdefaults setlocal commentstring=!\ %s
-autocmd FileType c setlocal commentstring=//\ %s
+autocmd FileType c,cpp setlocal commentstring=//\ %s
 autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
 
 highlight ExtraWhitespace ctermbg=red guibg=red
