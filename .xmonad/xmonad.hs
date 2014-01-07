@@ -44,7 +44,7 @@ main = xmonad defaultConfig
         smartBorders $
         onWorkspace "1" (task ||| Full) $
         onWorkspace "2" (makeTiled (11%20)) $
-        onWorkspace "3" coding $
+        onWorkspace "3" (coding ||| Full) $
         onWorkspace "4" task $
         onWorkspace "5" coding $
         onWorkspace "6" coding $

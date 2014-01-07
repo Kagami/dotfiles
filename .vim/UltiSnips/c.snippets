@@ -7,7 +7,7 @@ snippet incl "Local include" !b
 endsnippet
 
 snippet main "Main function" !b
-int main(int argc, char *argv[])
+int main(${1:int argc, char *argv[]})
 {
 	$0
 
@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
 }
 endsnippet
 
-snippet foo "foo loop" !b
-for (${2:i} = 0; i < ${1:n}; $2++) {
+snippet for "Standart foo loop with a counter" !b
+for (${2:i} = 0; $2 < ${1:n}; $2++) {
 	$0
 }
 endsnippet
