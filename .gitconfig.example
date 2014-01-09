@@ -30,3 +30,5 @@
 	cmd = meld --auto-merge --output "$MERGED" "$LOCAL" "$BASE" "$REMOTE"
 [core]
 	pager = LESS=RSXc less
+[pull]
+	rebase = true
