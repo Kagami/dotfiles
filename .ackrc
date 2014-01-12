@@ -1,4 +1,4 @@
---type-add=html=.jade
+--type-add=html=.eco,.jade
 --type-add=css=.less,.sass,.scss,.styl
 --type-add=js=.coffee
 --ignore-dir=.venv

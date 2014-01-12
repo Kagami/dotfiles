@@ -41,7 +41,8 @@ let g:vim_markdown_folding_disabled=1
 let g:vim_json_syntax_conceal=0
 let g:ctrlp_use_caching=0
 let g:ctrlp_custom_ignore={
-    \ 'dir': '\v/(.*\.egg-info|vendor|bower_components|public|node_modules)$'}
+    \ 'dir':
+    \ '\v/(.*\.egg-info|vendor|bower_components|public|build|node_modules)$'}
 let g:hardtime_default_on=1
 " Disable "-" for figutive
 let g:list_of_normal_keys=[
