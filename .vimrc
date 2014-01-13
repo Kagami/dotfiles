@@ -34,7 +34,6 @@ set sessionoptions-=options
 set shellpipe=>  " Do not leak ack.vim output to console
 set nowritebackup
 set directory=~/.vim/swap
-set viminfo=
 
 let g:netrw_banner=0
 let g:vim_markdown_folding_disabled=1

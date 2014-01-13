@@ -7,7 +7,7 @@ stty start undef
 stty stop undef
 
 # Misc.
-setopt EXTENDED_GLOB
+# setopt EXTENDED_GLOB  # To many false triggering: HEAD^, bootstrap#2.3.2
 setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt PUSHD_MINUS
