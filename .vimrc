@@ -54,6 +54,7 @@ let g:UltiSnipsEditSplit='horizontal'
 let mapleader=','
 nnoremap Y y$
 nnoremap <Space> zz
+nnoremap <Leader>x "*
 nnoremap <C-n> :NERDTreeTabsToggle<CR>
 nnoremap <Leader>e :e<Space>
 nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
@@ -68,6 +69,7 @@ nnoremap <C-l> :tabnext<CR>
 nnoremap <Leader>te :tabe<Space>
 nnoremap <Leader>tn :tabn<Space>
 nnoremap <Leader>tm :tabm<Space>
+nnoremap <Leader>td :tabdo<Space>
 " Windows.
 nnoremap <Tab> <C-w>w
 nnoremap <S-Tab> <C-w>W
