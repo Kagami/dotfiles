@@ -9,7 +9,7 @@ is very simple.
 ```sh
 % git clone --bare https://github.com/Kagami/dotfiles.git ~/code/dotfiles.git
 % alias gdot='git --git-dir=$HOME/code/dotfiles.git --work-tree=$HOME'
-# Don't forget to backup your current dotfiles!!!
+# DON'T FORGET TO BACKUP YOUR CURRENT DOTFILES!!!
 % gdot reset --hard
 % gdot submodule init
 % gdot submodule update
