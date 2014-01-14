@@ -32,3 +32,5 @@
 	pager = LESS=RSXc less
 [pull]
 	rebase = true
+[url "https://"]
+	insteadOf = git://
