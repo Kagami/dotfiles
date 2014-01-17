@@ -92,7 +92,6 @@ alias du='du -sh'
 alias free='free -m'
 alias cal='cal -m'
 alias enc='enconv -L ru -x utf8'
-alias c='clear'
 alias scr='screen'
 alias am='alsamixer'
 alias m='mpv'
@@ -255,7 +254,7 @@ function eqw {
 
 # Clear dynamic terminal title.
 function rst {
-    echo -n '\e]0;\a'; clear
+    cd; echo -n '\e]0;Terminal\a'; clear
 }
 
 # Add sed-like functionality to ack.
