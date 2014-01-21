@@ -24,6 +24,7 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 
 autoload -U compinit && compinit
+[ -f /usr/share/zsh/site-functions/go ] && . /usr/share/zsh/site-functions/go
 zmodload zsh/complist
 bindkey -e
 bindkey -M menuselect '^M' .accept-line
