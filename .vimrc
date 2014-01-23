@@ -65,6 +65,7 @@ call togglebg#map("<Leader>tb")  " Make solarized light or dark
 " Tabs.
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
+nnoremap <C-t> :tabe<Space>
 nnoremap <Leader>te :tabe<Space>
 nnoremap <Leader>tn :tabn<Space>
 nnoremap <Leader>tm :tabm<Space>
