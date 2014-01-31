@@ -6,8 +6,7 @@ function {
 stty start undef
 stty stop undef
 
-# Misc.
-# setopt EXTENDED_GLOB  # To many false triggering: HEAD^, bootstrap#2.3.2
+# setopt EXTENDED_GLOB  # Too many false triggering: HEAD^, bootstrap#2.3.2
 setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt PUSHD_MINUS
@@ -220,8 +219,6 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-finish
 fi
 
-}
-
 ###
 # Helpers.
 ###
@@ -235,7 +232,7 @@ function rcd {
 }
 
 function mcd {
-    mkdir $1 && cd $1
+    [ $1 ] && mkdir $1 && cd $1
 }
 
 # Info about occupied space.
@@ -249,6 +246,7 @@ function dus {
 
 # Show package's ebuild.
 function eqw {
+    [ $1 ] || return
     local file=`equery which $1`
     [ $file ] && l $file
 }
@@ -281,3 +279,5 @@ if [[ $1 == eval ]]; then
     "$@"
     set --
 fi
+
+}
