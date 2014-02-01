@@ -112,6 +112,7 @@ alias bowlsp='bower list --paths'
 alias dir='dirs -v'
 alias psgrep='ps aux | grep'
 alias zmv='noglob zmv -W'
+alias net='netstat -anp L'
 
 local LESS_VIM='vim -c "set nomodifiable" -c "nnoremap q :q<CR>"'
 alias l="${LESS_VIM} -R"
