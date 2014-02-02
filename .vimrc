@@ -54,6 +54,7 @@ let mapleader=','
 nnoremap Y y$
 nnoremap <Space> zz
 nnoremap <Leader>x "*
+vnoremap <Leader>x "*
 nnoremap <C-n> :NERDTreeTabsToggle<CR>
 nnoremap <Leader>e :e<Space>
 nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
