@@ -1,7 +1,12 @@
+let VIM_DIR='/opt/userconfigs/'.$SSH_ORIGIN_USER.'/.vim'
+if !isdirectory(VIM_DIR)
+    let VIM_DIR='~/.vim'
+endif
+
 set nocompatible
 execute pathogen#infect()
 filetype plugin indent on
-set runtimepath+=~/.vim/bundle/powerline/powerline/bindings/vim
+execute 'set runtimepath+='.VIM_DIR.'/bundle/powerline/powerline/bindings/vim'
 
 set t_Co=16
 syntax enable
@@ -33,7 +38,7 @@ set autoread
 set sessionoptions-=options
 set shellpipe=>  " Do not leak ack.vim output to console
 set nowritebackup
-set directory=~/.vim/swap
+execute 'set directory='.VIM_DIR.'/swap'
 
 let g:netrw_banner=0
 let g:vim_markdown_folding_disabled=1
