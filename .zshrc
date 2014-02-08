@@ -220,6 +220,8 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-finish
 fi
 
+}
+
 ###
 # Helpers.
 ###
@@ -249,9 +251,7 @@ function dus {
 function eqw {
     [ $1 ] || return
     local file=`equery which $1`
-    if [ $file ]; then
-        l $file
-    fi
+    [ $file ] && l $file
 }
 
 # Clear dynamic terminal title.
@@ -282,5 +282,3 @@ if [[ $1 == eval ]]; then
     "$@"
     set --
 fi
-
-}
