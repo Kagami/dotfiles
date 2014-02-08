@@ -249,7 +249,9 @@ function dus {
 function eqw {
     [ $1 ] || return
     local file=`equery which $1`
-    [ $file ] && l $file
+    if [ $file ]; then
+        l $file
+    fi
 }
 
 # Clear dynamic terminal title.
