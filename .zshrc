@@ -134,7 +134,7 @@ alias aptr='sudo apt-get remove'
 alias aptp='sudo apt-get purge'
 alias aptc='sudo apt-get clean'
 alias aptu='sudo apt-get update'
-alias aptauto='sudo apt-get autoremove'
+alias aptauto='sudo apt-get remove --auto-remove --purge'
 
 alias e='eix'
 alias ei='eix -I'
