@@ -109,23 +109,16 @@ alias grunt='node_modules/.bin/grunt'
 alias bower='node_modules/.bin/bower'
 alias bowls='bower list --offline'
 alias bowlsp='bower list --paths'
-alias dir='dirs -v'
-alias psgrep='ps aux | grep'
 alias zmv='noglob zmv -W'
-alias net='netstat -anp L'
+alias netst='netstat -anp L'
+alias hd='hexdump -C'
+which exo-open &>/dev/null && alias o='exo-open' || alias o='xdg-open'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 local LESS_VIM='vim -c "set nomodifiable" -c "nnoremap q :q<CR>"'
 alias l="${LESS_VIM} -R"
 alias -g L="|${LESS_VIM} -c 'set nomodified' -"
-
-if which exo-open &>/dev/null; then
-    alias o='exo-open'
-else
-    alias o='xdg-open'
-fi
-if ! which hd &>/dev/null; then
-    alias hd='hexdump -C'
-fi
 
 alias apts='apt-cache search'
 alias aptsh='apt-cache show'
