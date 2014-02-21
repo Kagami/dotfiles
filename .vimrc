@@ -48,11 +48,14 @@ let g:ctrlp_custom_ignore={
     \ 'dir':
     \ '\v/(.*\.egg-info|vendor|bower_components|public|build|node_modules)$'}
 let g:hardtime_default_on=1
-" Disable "-" for figutive
+" Disable "-" for figutive.
 let g:list_of_normal_keys=[
     \ "h", "j", "k", "l", "+",
     \ "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 let g:UltiSnipsEditSplit='horizontal'
+" Surrond with « and ».
+let g:surround_171="« \r »"
+let g:surround_187="«\r»"
 
 " Basic hotkeys.
 let mapleader=','
