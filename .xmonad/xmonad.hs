@@ -14,13 +14,11 @@ import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.StackSet (StackSet, view, currentTag)
+import XMonad.Util.Run (safeSpawn)
 import XMonad.Util.EZConfig (mkKeymap)
 import XMonad.Util.NamedScratchpad (NamedScratchpad(..), namedScratchpadAction,
                                     namedScratchpadManageHook, customFloating)
 import qualified XMonad.StackSet as W
-
-import XMonad.Extra (myTerminal, myWorkspaces, initShells, initJsDevEnv,
-                     initDevEnv)
 
 main :: IO ()
 main = xmonad defaultConfig
@@ -83,12 +81,13 @@ myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
     , ("M-c", kill)
     , ("M-b", sendMessage ToggleStruts)
 
-    , ("<F12>", updateConfig)
-    , ("M-<F12>", io exitSuccess)
+    , ("M-x r", updateConfig)
+    , ("M-x M-c", io exitSuccess)
 
     , ("M-x s", initShells)
-    , ("M-x j", initJsDevEnv)
-    , ("M-x d", initDevEnv)
+    , ("M-x d 1", initDevEnv devWorkspace1)
+    , ("M-x d 2", initDevEnv devWorkspace2)
+    -- Toggle fullscreen on web workspace.
     , ("M-x f", sendMessage NextLayout >> sendMessage ToggleStruts)
     ]
     `M.union` (M.fromList $
@@ -160,22 +159,79 @@ myStartupHook = do
     args <- io getArgs
     -- Check for the first start
     unless ("--resume" `elem` args) $ do
-        -- X related things
+        -- X-related things.
         spawn "xscreensaver -no-splash"
         spawn "xset r rate 300 50"
         spawn "feh --no-fehbg --bg-center /media/hdd/images/diff/wallpaper.jpg"
         spawn "xsetroot -cursor_name left_ptr"
         spawn "wmname LG3D"
         spawn "fbpanel"
-        -- Spawn all needed apps
+        -- Spawn all needed apps.
         spawn "stardict"
-        spawnOn "1" "firefox-bin"
-        spawnOn "1" "deadbeef"
-        spawnOn "2" "gajim"
-        spawnAndDo (doSwapDown "2" <+> doShift "2") "thunderbird-bin"
-        --replicateM_ 3 $ spawnOn "3" $ myTerminal ++ " --disable-server"
-        spawnOn "4" "thunar /media/hdd/downloads/"
-        spawnAndDo (doSwapDown "4" <+> doShift "4") "transmission-gtk"
+        spawnOn webWorkspace "firefox-bin"
+        spawnOn webWorkspace "deadbeef"
+        spawnOn imWorkspace "gajim"
+        spawnAndDo
+            (doSwapDown imWorkspace <+> doShift imWorkspace)
+            "thunderbird-bin"
+        -- replicateM_ shellWorkspace $
+        --     spawnOn shellWorkspace $
+        --     myTerminal ++ " --disable-server"
+        spawnOn filesWorkspace "thunar /media/hdd/downloads/"
+        spawnAndDo
+            (doSwapDown filesWorkspace <+> doShift filesWorkspace)
+            "transmission-gtk"
+
+myTerminal :: FilePath
+myTerminal = "xfce4-terminal"
+
+myWorkspaces :: [WorkspaceId]
+myWorkspaces =
+    [ webWorkspace
+    , imWorkspace
+    , shellWorkspace
+    , filesWorkspace
+    , devWorkspace1
+    , devWorkspace2
+    ] ++ extraWorkspaces
+
+webWorkspace :: WorkspaceId
+webWorkspace = "1"
+
+imWorkspace :: WorkspaceId
+imWorkspace = "2"
+
+shellWorkspace :: WorkspaceId
+shellWorkspace = "3"
+
+filesWorkspace :: WorkspaceId
+filesWorkspace = "4"
+
+devWorkspace1 :: WorkspaceId
+devWorkspace1 = "5"
+
+devWorkspace2 :: WorkspaceId
+devWorkspace2 = "6"
+
+extraWorkspaces :: [WorkspaceId]
+extraWorkspaces = ["7", "8"]
+
+initShells :: X ()
+initShells = do
+    windows $ W.greedyView shellWorkspace
+    safeSpawn
+        myTerminal
+        ["-e", "true", "--window", "--tab", "--window", "--tab"]
+
+initDevEnv :: WorkspaceId -> X ()
+initDevEnv workspace = do
+    windows $ W.greedyView workspace
+    safeSpawn "chromium" []
+    safeSpawn myTerminal ["-e", "zsh -is eval 'cd ~/code'"]
+
+---
+-- Utils.
+---
 
 -- | Do swapDown on the specified workspace.
 doSwapDown :: WorkspaceId -> ManageHook
