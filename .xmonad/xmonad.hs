@@ -13,11 +13,16 @@ import XMonad.Hooks.ManageDocks (ToggleStruts(..), avoidStruts, manageDocks)
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.PerWorkspace (onWorkspace)
+import XMonad.Layout.Combo (combineTwo)
+import XMonad.Layout.Tabbed (Theme(..), tabbed, shrinkText, defaultTheme)
+import XMonad.Layout.TwoPane (TwoPane(..))
+import XMonad.Layout.WindowNavigation (Navigate(..), Direction2D(..))
+import XMonad.Layout.WindowNavigation (windowNavigation)
 import XMonad.StackSet (StackSet, view, currentTag)
 import XMonad.Util.Run (safeSpawn)
 import XMonad.Util.EZConfig (mkKeymap)
-import XMonad.Util.NamedScratchpad (NamedScratchpad(..), namedScratchpadAction,
-                                    namedScratchpadManageHook, customFloating)
+import XMonad.Util.NamedScratchpad (NamedScratchpad(..), namedScratchpadAction)
+import XMonad.Util.NamedScratchpad (namedScratchpadManageHook, customFloating)
 import qualified XMonad.StackSet as W
 
 main :: IO ()
@@ -40,18 +45,32 @@ main = xmonad defaultConfig
     myLayoutHook =
         avoidStruts $
         smartBorders $
-        onWorkspace "1" (task ||| Full) $
-        onWorkspace "2" (makeTiled (11%20)) $
-        onWorkspace "3" (coding ||| Full) $
-        onWorkspace "4" task $
-        onWorkspace "5" coding $
-        onWorkspace "6" coding $
-        tiled ||| Full
+        windowNavigation $
+            onWorkspace "1" (task ||| Full) $
+            onWorkspace "2" (makeTiled (11%20)) $
+            onWorkspace "3" (coding ||| Full) $
+            onWorkspace "4" task $
+            onWorkspace "5" coding $
+            onWorkspace "6" twoPane $
+            -- Fallback to default.
+            tiled -- ||| Full
       where
         task = makeTiled (7%10)
-        coding = makeTiled (1074%1920)
-        tiled = makeTiled (1%2)
-        makeTiled n = Tall 1 (1%100) n
+        coding = makeTiled codingRatio
+        twoPane =
+            combineTwo
+                (TwoPane defaultRatioIncrement codingRatio)
+                myTabbed
+                myTabbed
+        tiled = makeTiled defaultRatio
+        makeTiled = Tall 1 defaultRatioIncrement
+        myTabbed = tabbed shrinkText tabbedTheme
+        -- Default misc fixed font isn't working.
+        -- See <https://code.google.com/p/xmonad/issues/detail?id=361>.
+        tabbedTheme = defaultTheme { fontName = "xft:DejaVu Sans:size=10" }
+        codingRatio = 1074%1920
+        defaultRatioIncrement = 1%100
+        defaultRatio = 1%2
 
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
@@ -64,6 +83,7 @@ myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
     , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%-")
     , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+")
 
+    -- Basic navigation.
     , ("M1-<Tab>", windows W.focusDown)
     , ("M-j", windows W.focusDown)
     , ("M-k", windows W.focusUp)
@@ -71,6 +91,10 @@ myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
     , ("M-S-k", windows W.swapUp)
     , ("M-h", sendMessage Shrink)
     , ("M-l", sendMessage Expand)
+
+    -- Extended navigation.
+    , ("C-M-j", sendMessage $ Move R)
+    , ("C-M-k", sendMessage $ Move L)
 
     , ("M-<Space>", sendMessage NextLayout)
     , ("M-S-<Space>", setLayout layoutHook)
@@ -82,7 +106,7 @@ myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
     , ("M-b", sendMessage ToggleStruts)
 
     , ("M-x r", updateConfig)
-    , ("M-x M-c", io exitSuccess)
+    , ("M-<F12>", io exitSuccess)
 
     , ("M-x s", initShells)
     , ("M-x d 1", initDevEnv devWorkspace1)
