@@ -1,0 +1,7 @@
+alang = jpn,eng
+slang = rus,eng
+subcp = enca:ru:utf8
+heartbeat-cmd = "xscreensaver-command -deactivate >&- 2>&- &"
+screenshot-format = png
+screenshot-template = /home/kagami/shot%n
+autosub-match = all
