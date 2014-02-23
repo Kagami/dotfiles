@@ -22,7 +22,7 @@ done
 # Autoconvert list to string delemited by colons.
 local -aT SUBPATHS subpaths
 # Collect subtitles directories.
-subpaths=( ${^mediadirs}/(#i)*(sub|суб)*{,/**}(/) )
+subpaths=( ${^mediadirs}/(#i)*(sub|суб)*{,/**/*}(/) )
 
 local -a args
 if (( ${#subpaths} )); then
@@ -30,4 +30,4 @@ if (( ${#subpaths} )); then
 fi
 args+=( $@ )
 echo "Playing with arguments: '$args'" >&2
-mpv $args
+exec mpv $args
