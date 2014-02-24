@@ -1,8 +1,11 @@
 #!/bin/zsh
 
+###
 # Try to load all available subtitles for mpv not regarding their
 # nesting level.
 # Based on <https://www.linux.org.ru/news/multimedia/9704338?cid=9715830>.
+###
+
 set -e
 setopt EXTENDED_GLOB
 setopt NULL_GLOB
@@ -29,5 +32,6 @@ if (( ${#subpaths} )); then
     args+=( -sub-paths $SUBPATHS )
 fi
 args+=( $@ )
+
 echo "Playing with arguments: '$args'" >&2
 exec mpv $args

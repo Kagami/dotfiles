@@ -53,7 +53,7 @@ main = xmonad defaultConfig
             onWorkspace "5" coding $
             onWorkspace "6" twoPane $
             -- Fallback to default.
-            tiled -- ||| Full
+            tiled ||| Full
       where
         task = makeTiled (7%10)
         coding = makeTiled codingRatio
@@ -67,7 +67,7 @@ main = xmonad defaultConfig
         myTabbed = tabbed shrinkText tabbedTheme
         -- Default misc fixed font isn't working.
         -- See <https://code.google.com/p/xmonad/issues/detail?id=361>.
-        tabbedTheme = defaultTheme { fontName = "xft:DejaVu Sans:size=10" }
+        tabbedTheme = defaultTheme { fontName="xft:DejaVu Sans:size=10" }
         codingRatio = 1074%1920
         defaultRatioIncrement = 1%100
         defaultRatio = 1%2
