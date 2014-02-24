@@ -219,6 +219,10 @@ fi
 # Helpers.
 ###
 
+function chpwd() {
+    ls
+}
+
 function lcd {
     cd $1 && ls
 }
