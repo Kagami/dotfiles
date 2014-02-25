@@ -144,7 +144,7 @@ alias eworld='sudo emerge -uDNav world'
 alias edeep='sudo emerge -uDNav world --with-bdeps=y --complete-graph=y'
 
 alias g='git'
-alias ga='git add'
+alias ga='git add -A'
 alias gc='git commit'
 alias gs='git status'
 alias gsh='git show'

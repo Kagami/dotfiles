@@ -6,7 +6,7 @@
 [push]
 	default = simple
 [alias]
-	a = add
+	a = add -A
 	c = commit
 	s = status
 	sh = show
