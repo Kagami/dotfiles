@@ -28,6 +28,8 @@ set hlsearch
 set laststatus=2
 set noshowmode
 set colorcolumn=81
+set textwidth=72
+set formatoptions-=t
 set wildignore+=*.pyc
 set cpoptions+=Z
 set nomodeline
@@ -36,7 +38,7 @@ set lazyredraw
 set fileencoding=utf-8
 set autoread
 set sessionoptions-=options
-set shellpipe=>  " Do not leak ack.vim output to console
+set shellpipe=>  " Do not leak ack.vim output to the console
 set nowritebackup
 execute 'set directory='.VIM_DIR.'/swap'
 
