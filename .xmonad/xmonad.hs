@@ -243,9 +243,7 @@ extraWorkspaces = ["7", "8"]
 initShells :: X ()
 initShells = do
     windows $ W.greedyView shellWorkspace
-    safeSpawn
-        myTerminal
-        ["-e", "true", "--window", "--tab", "--window", "--tab"]
+    safeSpawn myTerminal ["-e", "true", "--window", "--window"]
 
 initDevEnv :: WorkspaceId -> X ()
 initDevEnv workspace = do

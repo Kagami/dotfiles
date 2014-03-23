@@ -25,7 +25,7 @@ done
 # Autoconvert list to string delemited by colons.
 local -aT SUBPATHS subpaths
 # Collect subtitles directories.
-subpaths=( ${^mediadirs}/(#i)*(sub|суб)*{,/**/*}(/) )
+subpaths=( ${^mediadirs}/(#i)*(eng|rus|sub|суб)*{,/**/*}(/) )
 
 local -a args
 if (( ${#subpaths} )); then
