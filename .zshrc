@@ -115,8 +115,6 @@ alias psgrep='ps aux G'
 alias netst='netstat -anp L'
 alias hd='hexdump -C'
 which exo-open &>/dev/null && alias o='exo-open' || alias o='xdg-open'
-alias ...='cd ../..'
-alias ....='cd ../../..'
 
 local LESS_VIM='vim -c "set nomodifiable" -c "nnoremap q :q<CR>"'
 alias l="${LESS_VIM} -R"
@@ -168,6 +166,8 @@ alias -g H='|head'
 alias -g T='|tail'
 alias -g G='|grep'
 alias -g W='|wc -l'
+alias -g ...='../..'
+alias -g ....='../../..'
 
 hash -d hdd=/media/hdd
 
