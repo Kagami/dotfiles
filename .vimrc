@@ -30,6 +30,7 @@ set noshowmode
 set colorcolumn=81
 set textwidth=72
 set formatoptions-=t
+set nojoinspaces  " Single space after period on lines join
 set wildignore+=*.pyc
 set cpoptions+=Z
 set nomodeline
