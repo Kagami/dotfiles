@@ -112,7 +112,7 @@ alias bowlsp='bower list --paths'
 alias zmv='noglob zmv -W'
 alias dir='dirs -v'
 alias psgrep='ps aux G'
-alias netst='netstat -anp L'
+alias netst='netstat -anp'
 alias hd='hexdump -C'
 which exo-open &>/dev/null && alias o='exo-open' || alias o='xdg-open'
 
