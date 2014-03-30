@@ -17,7 +17,8 @@ import XMonad.Layout.Combo (combineTwo)
 import XMonad.Layout.Tabbed (Theme(..), tabbed, shrinkText, defaultTheme)
 import XMonad.Layout.TwoPane (TwoPane(..))
 import XMonad.Layout.WindowNavigation (Navigate(..), Direction2D(..))
-import XMonad.Layout.WindowNavigation (windowNavigation)
+import XMonad.Layout.WindowNavigation (configurableNavigation)
+import XMonad.Layout.WindowNavigation (noNavigateBorders)
 import XMonad.StackSet (StackSet, view, currentTag)
 import XMonad.Util.Run (safeSpawn)
 import XMonad.Util.EZConfig (mkKeymap)
@@ -42,6 +43,7 @@ main = xmonad defaultConfig
     , startupHook = myStartupHook
     }
   where
+    windowNavigation = configurableNavigation noNavigateBorders
     myLayoutHook =
         avoidStruts $
         smartBorders $
@@ -108,7 +110,6 @@ myKeys conf@(XConfig { modMask=modm, .. }) = mkKeymap conf
     , ("M-x r", updateConfig)
     , ("M-<F12>", io exitSuccess)
 
-    , ("M-x s", initShells)
     , ("M-x d 1", initDevEnv devWorkspace1)
     , ("M-x d 2", initDevEnv devWorkspace2)
     -- Toggle fullscreen on web workspace.
@@ -198,9 +199,7 @@ myStartupHook = do
         spawnAndDo
             (doSwapDown imWorkspace <+> doShift imWorkspace)
             "thunderbird-bin"
-        -- replicateM_ shellWorkspace $
-        --     spawnOn shellWorkspace $
-        --     myTerminal ++ " --disable-server"
+        spawnOn shellWorkspace $ myTerminal ++ " -e true --window --window"
         spawnOn filesWorkspace "thunar /media/hdd/downloads/"
         spawnAndDo
             (doSwapDown filesWorkspace <+> doShift filesWorkspace)
@@ -239,11 +238,6 @@ devWorkspace2 = "6"
 
 extraWorkspaces :: [WorkspaceId]
 extraWorkspaces = ["7", "8"]
-
-initShells :: X ()
-initShells = do
-    windows $ W.greedyView shellWorkspace
-    safeSpawn myTerminal ["-e", "true", "--window", "--window"]
 
 initDevEnv :: WorkspaceId -> X ()
 initDevEnv workspace = do
