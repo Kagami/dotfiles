@@ -35,7 +35,6 @@ set wildignore+=*.pyc
 set cpoptions+=Z
 set nomodeline
 set backspace=indent,eol,start
-set lazyredraw
 set fileencoding=utf-8
 set autoread
 set sessionoptions-=options
@@ -53,12 +52,12 @@ let g:ctrlp_custom_ignore={
 let g:hardtime_default_on=1
 " Disable "-" for figutive.
 let g:list_of_normal_keys=[
-    \ "h", "j", "k", "l", "+",
-    \ "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+    \ 'h', 'j', 'k', 'l', '+',
+    \ '<UP>', '<DOWN>', '<LEFT>', '<RIGHT>']
 let g:UltiSnipsEditSplit='horizontal'
 " Surrond with « and ».
-let g:surround_171="« \r »"
-let g:surround_187="«\r»"
+let g:surround_171='« \r »'
+let g:surround_187='«\r»'
 
 " Basic hotkeys.
 let mapleader=','
@@ -73,7 +72,7 @@ nnoremap <Leader>n :nohlsearch<CR>
 nnoremap <Leader>so :source $MYVIMRC<CR>
 nnoremap <Leader>a :Ack!<Space>
 nnoremap <Leader>se :UltiSnipsEdit<CR>
-call togglebg#map("<Leader>tb")  " Make solarized light or dark
+call togglebg#map('<Leader>tb')  " Make solarized light or dark
 " Tabs.
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
@@ -127,6 +126,7 @@ autocmd FileType make,gitconfig setlocal noexpandtab
 autocmd FileType gitcommit setlocal colorcolumn=51
 autocmd FileType xdefaults setlocal commentstring=!\ %s
 autocmd FileType c,cpp setlocal commentstring=//\ %s
+autocmd FileType gentoo-make-conf setlocal commentstring=#\ %s
 autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
 
 highlight ExtraWhitespace ctermbg=red guibg=red
