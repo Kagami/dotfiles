@@ -48,12 +48,12 @@ main = xmonad defaultConfig
         avoidStruts $
         smartBorders $
         windowNavigation $
-            onWorkspace "1" (task ||| Full) $
-            onWorkspace "2" (makeTiled (11%20)) $
-            onWorkspace "3" (coding ||| Full) $
-            onWorkspace "4" task $
-            onWorkspace "5" coding $
-            onWorkspace "6" twoPane $
+            onWorkspace webWorkspace (task ||| Full) $
+            onWorkspace imWorkspace (makeTiled (11%20)) $
+            onWorkspace shellWorkspace (coding ||| Full) $
+            onWorkspace filesWorkspace task $
+            onWorkspace devWorkspace1 twoPane $
+            onWorkspace devWorkspace2 twoPane $
             -- Fallback to default.
             tiled ||| Full
       where
