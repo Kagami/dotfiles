@@ -5,3 +5,4 @@ heartbeat-cmd = "xscreensaver-command -deactivate >&- 2>&- &"
 screenshot-format = png
 screenshot-template = /home/kagami/shot%n
 autosub-match = fuzzy
+softvol-max = 500
