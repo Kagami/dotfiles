@@ -52,8 +52,8 @@ main = xmonad defaultConfig
             onWorkspace imWorkspace (makeTiled (11%20)) $
             onWorkspace shellWorkspace (coding ||| Full) $
             onWorkspace filesWorkspace task $
-            onWorkspace devWorkspace1 twoPane $
-            onWorkspace devWorkspace2 twoPane $
+            onWorkspace devWorkspace1 (twoPane ||| Full) $
+            onWorkspace devWorkspace2 (twoPane ||| Full) $
             -- Fallback to default.
             tiled ||| Full
       where
