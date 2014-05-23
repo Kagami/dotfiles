@@ -23,11 +23,12 @@
 	mt = mergetool --no-prompt
 	rb = rebase
 [merge]
+	conflictstyle = diff3
 	tool = meld
 [mergetool]
 	keepBackup = false
 [mergetool "meld"]
-	cmd = meld --auto-merge --output "$MERGED" "$LOCAL" "$BASE" "$REMOTE"
+	cmd = meld --auto-merge --output $MERGED $LOCAL $BASE $REMOTE --diff $BASE $LOCAL --diff $BASE $REMOTE
 [core]
 	pager = LESS=RSXc less
 [pull]
