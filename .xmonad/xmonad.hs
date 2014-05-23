@@ -155,6 +155,7 @@ myManageHook = composeAll
     , className =? "mplayer2" --> doFloat
     , className =? "mpv" --> doFloat
     , className =? "Gimp" --> doFloat
+    , className =? "Dia" --> doFloat
     , className =? "Stardict" --> doFloat
     , className =? "feh" --> doFloat
     , className =? "Gajim" <&&> role /=? "roster" --> doFloat
