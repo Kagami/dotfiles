@@ -1,7 +1,6 @@
 # To prevent leaking temporary variables inside the shell.
 function {
 
-[ -f ~/.zprofile ] && . ~/.zprofile
 # To make C-s/C-q work.
 stty start undef
 stty stop undef
