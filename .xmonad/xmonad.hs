@@ -200,7 +200,7 @@ myStartupHook = do
         spawnAndDo
             (doSwapDown imWorkspace <+> doShift imWorkspace)
             "thunderbird-bin"
-        spawnOn shellWorkspace $ myTerminal ++ " -e true --window --window"
+        -- spawnOn shellWorkspace $ myTerminal ++ " -e true --window --window"
         spawnOn filesWorkspace "thunar /media/hdd/downloads/"
         spawnAndDo
             (doSwapDown filesWorkspace <+> doShift filesWorkspace)
