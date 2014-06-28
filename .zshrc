@@ -81,6 +81,7 @@ alias lla='ls -Alh'
 alias lr='ls -rt'
 alias lsd='ls -d'
 
+alias vim='vim -u ~/.vimrc'
 alias v='vim'
 alias sv='sudo -E vim'
 alias mv='mv -i'
