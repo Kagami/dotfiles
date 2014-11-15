@@ -41,6 +41,7 @@ let g:netrw_banner=0
 let g:vim_markdown_folding_disabled=1
 let g:vim_json_syntax_conceal=0
 let g:ctrlp_use_caching=0
+let g:ctrlp_show_hidden=1
 let g:ctrlp_custom_ignore={
     \ 'dir': '\v/(.*\.egg-info|bower_components|public|build|node_modules)$'
 \}
@@ -64,7 +65,7 @@ nnoremap <C-n> :NERDTreeTabsToggle<CR>
 nnoremap <Leader>e :e<Space>
 nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
 nnoremap <Leader>n :nohlsearch<CR>
-nnoremap <Leader>so :source $MYVIMRC<CR>
+nnoremap <Leader>so :source ~/.vimrc<CR>
 nnoremap <Leader>a :Ack!<Space>
 nnoremap <Leader>se :UltiSnipsEdit<CR>
 call togglebg#map('<Leader>tb')  " Make solarized light or dark
