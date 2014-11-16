@@ -115,7 +115,7 @@ nnoremap K <Nop>
 set expandtab
 set shiftwidth=4
 set tabstop=4
-autocmd FileType coffee,ruby setlocal shiftwidth=2
+autocmd FileType coffee,javascript,ruby setlocal shiftwidth=2
 autocmd FileType eco,html,jade,less,stylus,sass,scss,json setlocal shiftwidth=2
 autocmd BufWinEnter *.gpp setlocal shiftwidth=2
 autocmd FileType make,gitconfig setlocal noexpandtab
