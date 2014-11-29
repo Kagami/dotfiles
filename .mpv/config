@@ -1,8 +1,10 @@
-alang = jpn,eng
-slang = rus,eng
-subcp = enca:ru:utf8
+vo = vdpau
+alang = jpn,nor,ger,eng
+slang = eng,rus
+sub-codepage = enca:ru:utf8
 heartbeat-cmd = "xscreensaver-command -deactivate >&- 2>&- &"
 screenshot-format = png
 screenshot-template = /home/kagami/shot%n
-autosub-match = fuzzy
+sub-auto = fuzzy
 softvol-max = 500
+cache = 100000
