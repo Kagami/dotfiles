@@ -1,6 +1,6 @@
 vo = vdpau
-alang = jpn,nor,ger,eng
-slang = eng,rus
+alang = jpn,fre,nor,ger,eng
+slang = rus,eng
 sub-codepage = enca:ru:utf8
 heartbeat-cmd = "xscreensaver-command -deactivate >&- 2>&- &"
 screenshot-format = png
