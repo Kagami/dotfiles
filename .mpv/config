@@ -1,4 +1,5 @@
 vo = vdpau
+osc = no
 alang = jpn,fre,nor,ger,eng
 slang = rus,eng
 sub-codepage = enca:ru:utf8
