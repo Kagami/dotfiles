@@ -1,9 +1,7 @@
-vo = vdpau
 osc = no
 alang = jpn,fre,nor,ger,eng
 slang = rus,eng
 sub-codepage = enca:ru:utf8
-heartbeat-cmd = "xscreensaver-command -deactivate >&- 2>&- &"
 screenshot-format = png
 screenshot-template = /home/kagami/shot%n
 sub-auto = fuzzy
