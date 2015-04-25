@@ -1,5 +1,5 @@
 osc = no
-alang = jpn,fre,nor,ger,eng
+alang = jpn,fre,nor,ger,scc,eng
 slang = rus,eng
 sub-codepage = enca:ru:utf8
 screenshot-format = png
@@ -7,3 +7,5 @@ screenshot-template = /home/kagami/shot%n
 sub-auto = fuzzy
 softvol-max = 500
 cache = 100000
+stop-screensaver = no
+osd-font-size = 40
